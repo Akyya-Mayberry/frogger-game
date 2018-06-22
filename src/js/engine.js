@@ -78,7 +78,7 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
-        //updateEntities(dt);
+        updateEntities(dt);
         // checkCollisions();
     }
 
@@ -93,7 +93,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
+        // player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -134,6 +134,7 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
+
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
@@ -153,7 +154,7 @@ var Engine = (function(global) {
             enemy.render();
         });
 
-        player.render();
+        // player.render();
     }
 
     /* This function does nothing but it could have been a good place to
