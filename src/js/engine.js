@@ -91,8 +91,12 @@ var Engine = (function(global) {
      */
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
-            enemy.update(dt);
+            enemy.update(dt, ctx.width);
         });
+
+        // for (const e of allEnemies) {
+        //     e.update(dt);
+        // }
         // player.update();
     }
 
@@ -153,6 +157,10 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
+        
+        // for (const e of allEnemies) {
+        //     e.render();
+        // }
 
         // player.render();
     }
