@@ -103,4 +103,4 @@ typings/
 
 # build files
 dist/
-src/js/
+#src/js/
