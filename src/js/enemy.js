@@ -10,7 +10,7 @@ var Enemy = function(x, y, sprite = 'public/images/enemy-bug.png') {
     this.sprite = sprite;
 };
 
-Enemy.prototype.speeds = [1, 4, .2, 9, .02, .6];
+Enemy.prototype.speeds = [10, 0, 0, 0, .02, 0, 0];
 Enemy.prototype.transparencies = [1, .2, .5, .02, .6];
 
 // Update the enemy's position, required method for game
@@ -23,8 +23,8 @@ Enemy.prototype.update = function(dt) {
         this.x = -7;
         return;
     }
-
-    this.x += this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)] + (dt * 2);
+    this.x += (83 * dt) + this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)];
+    // this.x += this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)] + (dt * 2);
 };
 
 // Draw the enemy on the screen, required method for game

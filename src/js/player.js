@@ -12,4 +12,20 @@ Player.prototype.update = function(dt) {
 
 Player.prototype.handleInput = function(move) {
     console.log('move: ', move);
+    switch (move) {
+        case 'left':
+            this.x -= 103;
+            break;
+        case 'right':
+            this.x += 103;
+            break;
+        case 'up':
+            this.y -= 103;
+            break;
+        case 'down':
+            this.y += 103;
+            break;
+        default:
+            console.log('invalid movement');
+    }
 }
