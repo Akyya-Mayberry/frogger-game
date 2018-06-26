@@ -22,6 +22,7 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        target = 0.5,
         lastTime;
 
     canvas.width = 505;
@@ -79,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -91,7 +92,7 @@ var Engine = (function(global) {
      */
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
-            enemy.update(dt, ctx.width);
+            enemy.update(dt);
         });
 
         player.update(dt);
@@ -156,6 +157,18 @@ var Engine = (function(global) {
         });
 
         player.render();
+    }
+
+    function checkCollisions() {
+        for (const e of allEnemies) {
+            if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
+                console.log('attack!');
+                console.log('e: ', e.x, ' p: ', player.x)
+                e.attack('Hit hit hit!!!!');
+                player.y = 5;
+                player.x = 2;
+            }
+        }
     }
 
     /* This function does nothing but it could have been a good place to

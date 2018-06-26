@@ -15,16 +15,19 @@ const shuffle = (array) => {
 // Place the player object in a variable called player
 
 function makeBugs() {
-    const locations = shuffle([[-2, 230], [-180, 150], [-60, 70]]);
+    // const locations = shuffle([[-2, 101], [-180, 303], [-60, 70]]);
     return [
-        new KillerBug(locations[0][0], locations[0][1]),
-        new KillerBug(locations[1][0], locations[1][1]),
-        new KillerBug(locations[2][0], locations[2][1])
+        new KillerBug(0, 1),
+        new KillerBug(-4, 2),
+        new KillerBug(0, 3)
     ]
 }
 
 const allEnemies = makeBugs();
-const player = new Player(101 * 2, 83*4);
+// setInterval(function(){
+//     allEnemies.push(new KillerBug(-500, 122));
+// }, 3000)
+const player = new Player(2, 5);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

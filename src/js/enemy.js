@@ -19,12 +19,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if (this.x > 101 * 5) {
-        this.x = -7;
+    if (this.x > 5) {
+        this.x = 0;
         return;
     }
-    this.x += (83 * dt) + this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)];
-    // this.x += this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)] + (dt * 2);
+    // this.x += dt;
+    // this.x += (83 * dt) + this.randomSpeed();
+    this.x += dt * this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)];;
+    // this.x += (83 * dt) + this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)];
 };
 
 // Draw the enemy on the screen, required method for game
@@ -33,9 +35,13 @@ Enemy.prototype.render = function() {
     // global sets the transparency of the enemy
     
     ctx.globalAlpha = this.camouflage ? this.camouflage : 1.0;
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
     ctx.globalAlpha = 1.0;
 };
+
+Enemy.prototype.randomSpeed = function() {
+    return Math.floor((Math.random() * 10) + 1)
+}
 
 function KillerBug(x, y, camouflage = 100) {
     Enemy.call(this, x, y);
