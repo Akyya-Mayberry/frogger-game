@@ -81,6 +81,7 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
+        isWinner();
     }
 
     /* This is called by the update function and loops through all of the
@@ -168,6 +169,14 @@ var Engine = (function(global) {
                 player.y = 5;
                 player.x = 2;
             }
+        }
+    }
+
+    function isWinner() {
+        if (player.y === 0) { 
+            alert('Winner!');
+            player.x = 2;
+            player.y = 5;
         }
     }
 

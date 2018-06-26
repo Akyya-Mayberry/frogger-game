@@ -24,9 +24,6 @@ function makeBugs() {
 }
 
 const allEnemies = makeBugs();
-// setInterval(function(){
-//     allEnemies.push(new KillerBug(-500, 122));
-// }, 3000)
 const player = new Player(2, 5);
 
 // This listens for key presses and sends the keys to your

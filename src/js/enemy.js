@@ -12,6 +12,24 @@ var Enemy = function(x, y, sprite = 'public/images/enemy-bug.png') {
 
 Enemy.prototype.speeds = [10, 0, 0, 0, .02, 0, 0];
 Enemy.prototype.transparencies = [1, .2, .5, .02, .6];
+Enemy.prototype.move = function(direction) {
+    switch (direction) {
+        case 'left':
+            this.x -= 1;
+            break;
+        case 'right':
+            this.x += 1;
+            break;
+        case 'up':
+            this.y -= 1;
+            break;
+        case 'down':
+            this.y += 1;
+            break;
+        default:
+            console.log('error');
+    }
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
