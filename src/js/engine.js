@@ -163,9 +163,7 @@ var Engine = (function(global) {
     function checkCollisions() {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
-                console.log('attack!');
-                console.log('e: ', e.x, ' p: ', player.x)
-                e.attack('Hit hit hit!!!!');
+                e.attack('Ouch!');
                 player.y = 5;
                 player.x = 2;
             }
