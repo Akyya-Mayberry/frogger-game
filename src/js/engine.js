@@ -164,8 +164,7 @@ var Engine = (function(global) {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
                 e.attack('Ouch!');
-                player.y = 5;
-                player.x = 2;
+                reset();
             }
         }
     }
@@ -173,8 +172,7 @@ var Engine = (function(global) {
     function isWinner() {
         if (player.y === 0) { 
             alert('Winner!');
-            player.x = 2;
-            player.y = 5;
+            reset();
         }
     }
 
@@ -183,7 +181,11 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        for (const e of allEnemies) {
+            e.x = KillerBug.prototype.getRandomStart();
+        }
+        player.x = 2;
+        player.y = 5;
     }
 
     /* Go ahead and load all of the images we know we're going to need to

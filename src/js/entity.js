@@ -44,6 +44,10 @@ EntityBase.prototype.render = function() {
     ctx.globalAlpha = 1.0;
 };
 
-EntityBase.prototype.getRandomSpeed = function() {
-    return Math.floor((Math.random() * 7) + 1)
+EntityBase.prototype.getRandomSpeed = function(max = 5) {
+    return Math.floor((Math.random() * max) + 1)
+}
+
+EntityBase.prototype.getRandomTransparency = function() {
+    return Math.random();
 }
