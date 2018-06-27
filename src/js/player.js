@@ -5,7 +5,7 @@ function Player(x, y, name="Player 1", sprite = 'public/images/char-boy.png') {
 Player.prototype = Object.create(EntityBase.prototype);
 Player.prototype.constructor = Player;
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
     // console.log('Stay put for now');
 }
 

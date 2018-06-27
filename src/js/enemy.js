@@ -1,6 +1,6 @@
-// Enemies our player must avoid
-function Enemy(x, y, name, sprite) {
-    EntityBase.call(this, x, y, name, sprite)
+function Enemy(x, y, name, sprite, speed = 1) {
+    EntityBase.call(this, x, y, name, sprite);
+    this.speed = speed;
 };
 
 Enemy.prototype = Object.create(EntityBase.prototype);
@@ -17,10 +17,11 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     if (this.x > 5) {
         this.x = 0;
+        this.speed = this.getRandomSpeed();
         return;
     }
 
-    this.x += dt * this.speeds[Math.floor((Math.random() * this.speeds.length - 1) + 1)];;
+    this.x += (dt * this.speed);
 };
 
 
