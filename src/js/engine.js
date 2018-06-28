@@ -96,7 +96,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
 
-        player.update(dt);
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -186,6 +186,12 @@ var Engine = (function(global) {
         }
         player.x = 2;
         player.y = 5;
+
+        /*
+        TODO:
+            Reset probably should be methods on the enemy
+            and player classes
+        */
     }
 
     /* Go ahead and load all of the images we know we're going to need to
