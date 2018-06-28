@@ -80,8 +80,8 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        checkCollisions();
-        isWinner();
+        let collision = checkCollisions();
+        !collision ? checkIsWinner() : playerHit();
     }
 
     /* This is called by the update function and loops through all of the
@@ -164,21 +164,31 @@ var Engine = (function(global) {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
                 e.attack('Ouch!');
-                reset();
+                return true;
             }
         }
+        return false;
     }
 
-    function isWinner() {
+    /**
+     * Checks if player has won game
+     */
+    function checkIsWinner() {
         if (player.y === 0) { 
             alert('Winner!');
             reset();
         }
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
+    /**
+     * Resets game - player loses
+     */
+    function playerHit() {
+        reset();
+    }
+
+    /* Resets most aspects of the game
+     * Player is set back to starting point and enemies taken back offscreen
      */
     function reset() {
         for (const e of allEnemies) {

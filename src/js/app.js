@@ -1,13 +1,4 @@
-// function makeBugs() {
-//     return [
-//         new KillerBug(-2, 1),
-//         new KillerBug(-5, 2),
-//         new KillerBug(-3, 3)
-//     ]
-// }
-
 let allEnemies = KillerBug.prototype.makeBugs();
-console.log('enemy', allEnemies[0]);
 let player = new Player();
 
 // This listens for key presses and sends the keys to your
