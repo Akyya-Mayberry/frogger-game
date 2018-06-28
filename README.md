@@ -19,9 +19,11 @@ For developers looking to work on the project follow the below steps. For users 
 
 #### Setting up development
 
-1. This game is primarily written in ES5 for purposes of practicing ES5 prototypical inheritance. It will eventually be moved fully to ES6 using the new class syntax. The major files for development include the *Engine, Entity, Enemy, and Player files*.
+1. This game is primarily written in ES5 for purposes of practicing ES5 prototypical inheritance. It will eventually be moved fully to ES6 using the new class syntax. The major files for development are located under the *src* directory. They include the *Engine, Entity, Enemy, and Player files*.
 
 *Engine*: Responsible for creating the animated effect
+
+*Resources*: Responsible for caching images
 
 *Enity*: Base class for the enemy and player, add code here that will be shared across all entites involved in the game
 
