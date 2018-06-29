@@ -61,7 +61,7 @@ Enemy.prototype.update = function(dt) {
  * @param {transparency ability - harder to see} camouflage 
  */
 function KillerBug(x, y, camouflage = 100) {
-    Enemy.call(this, x, y, 'Killer Bug', 'public/images/enemy-bug.png');
+    Enemy.call(this, x, y, 'Killer Bug', 'enemy-bug.png');
     this.camouflage = camouflage;
 }
 

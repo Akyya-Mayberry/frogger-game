@@ -20,11 +20,22 @@
     top: 0;
     width: 100%;
     text-align: center;
-    /* margin: 30px; */
+    margin: 0px;
 }
 
 .countdown {
     font-size: 8em;
+    margin: 0;
+}
+
+img {
+    width: 100px;
+}
+
+.selected {
+    border: 1px solid salmon;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 120px;
 }
 
 @media screen and (max-height: 450px) {

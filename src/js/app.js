@@ -1,8 +1,9 @@
 const countDown = document.querySelector('#countdown');
 const navMenu = document.querySelector('#myNav');
+const avatars = document.querySelector('#avatars');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 24;
+let count = 5;
 
 /**
  * Handles the countdown dislayed that controls
@@ -11,7 +12,7 @@ let count = 24;
 const t = setInterval(function () {
     if (count == 0) {
         const name = document.querySelector('#player-name');
-        
+
         if (name.length > 0 && name.value != '') { player.name = name.value; }
         player.activate();
 
@@ -19,9 +20,21 @@ const t = setInterval(function () {
         clearInterval(t);
     } else {
         countDown.innerHTML = count;
-        count--; 
+        count--;
     }
 }, 1000);
+
+// Listen for changes in avatar
+avatars.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'IMG') {
+        const src = e.target.src.split('/');
+        filename = src[src.length - 1];
+        player.changeSprite(filename);
+
+        document.querySelector('.selected').classList.remove('selected');
+        e.target.classList.add('selected');
+    }
+});
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
