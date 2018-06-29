@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="public/css/style.css">
+    <style>
+        .overlay {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(255, 255, 255, 0.532);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
 </head>
+
 <body>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <h2>Get Ready!</h2>
+            <h1 id="countdown" class="countdown"></h1>
+        </div>
+    </div>
     <script src="js/resources.js"></script>
     <script src="js/entity.js"></script>
     <script src="js/enemy.js"></script>
@@ -13,4 +44,5 @@
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
+
 </html>

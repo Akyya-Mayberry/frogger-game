@@ -7,12 +7,20 @@
  */
 function Player(x, y, name="Player 1", sprite = 'public/images/char-boy.png') {
     EntityBase.call(this, x, y, name, sprite);
-    this.camouflage = 1.0
-    this.hurt = 0
+    this.activated = false;
+    this.camouflage = 1.0;
+    this.hurt = 0;
 }
 
 Player.prototype = Object.create(EntityBase.prototype);
 Player.prototype.constructor = Player;
+
+/**
+ * Activates player (allows user to move player)
+ */
+Player.prototype.activate = function() {
+    player.activated = true;
+}
 
 /**
  * Decide what to do with this
@@ -52,6 +60,8 @@ Player.prototype.setLocation = function(x, y) {
  * @param {direction player attempts to move in} input 
  */
 Player.prototype.handleInput = function(input) {
+    if (!player.activated) { return; }
+
     switch (input) {
         case 'left':
             if (this.x > 0) { this.move(input) };
