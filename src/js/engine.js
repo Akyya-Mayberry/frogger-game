@@ -27,6 +27,7 @@ var Engine = (function(global) {
 
     canvas.width = 505;
     canvas.height = 606;
+    canvas.classList.add('canvas');
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself

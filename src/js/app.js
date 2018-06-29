@@ -3,7 +3,21 @@ const navMenu = document.querySelector('#myNav');
 const avatars = document.querySelector('#avatars');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 5;
+let count = 10;
+
+/**
+ * Handles all set up for setting game in motion
+ */
+function startGame() {
+    const name = document.querySelector('#player-name');
+    
+    if (name.value != '') { player.name = name.value; }
+    player.activate();
+
+    navMenu.style.width = '0%';
+
+    document.querySelector('#stats').innerHTML = `Go ${player.name}!`;
+}
 
 /**
  * Handles the countdown dislayed that controls
@@ -11,12 +25,7 @@ let count = 5;
  */
 const t = setInterval(function () {
     if (count == 0) {
-        const name = document.querySelector('#player-name');
-
-        if (name.length > 0 && name.value != '') { player.name = name.value; }
-        player.activate();
-
-        navMenu.style.width = '0%';
+        startGame();
         clearInterval(t);
     } else {
         countDown.innerHTML = count;
@@ -33,7 +42,7 @@ const updateAvatar = function (e) {
 
         const src = e.target.src.split('/');
         filename = src[src.length - 1];
-        
+
         player.changeSprite(filename);
 
         document.querySelector('.selected').classList.remove('selected');
