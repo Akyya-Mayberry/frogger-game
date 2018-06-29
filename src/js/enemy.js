@@ -26,7 +26,8 @@ Enemy.prototype.resetLocation = function() {
  * Displays name of enemy that attack
  */
 Enemy.prototype.attack = function() {
-    alert(`Ouch! Hit. ${this.name} attacked!`);
+    this.camouflage = 1.0;
+    // alert(`Ouch! Hit. ${this.name} attacked!`);
 }
 
 /**

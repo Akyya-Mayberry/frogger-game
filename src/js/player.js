@@ -43,7 +43,12 @@ Player.prototype.hit = function() {
     
     player.hurt = 10;
     this.camouflage = .35;
-    this.setLocation(2, 5);
+    
+    if (this.y < 2) {
+        this.setLocation(2, 5);
+    } else {
+        this.setLocation(this.x - 1, this.y + 2);
+    }
 }
 
 /**
@@ -52,7 +57,12 @@ Player.prototype.hit = function() {
  * @param {placement of player on verticle axis} y
  */
 Player.prototype.setLocation = function(x, y) {
-    if (x > 0 && x < 5 && y > 0 && y < 6) { this.x = x; this.y = y };
+    if (x > 0 && x < 6 && y > 0 && y < 6) { 
+        this.x = x; this.y = y
+    } else {
+        this.x = 2;
+        this.y = 5;
+    }
 }
 
 /**

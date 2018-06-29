@@ -3,7 +3,7 @@ const navMenu = document.querySelector('#myNav');
 const avatars = document.querySelector('#avatars');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 10;
+let count = 14;
 
 /**
  * Handles all set up for setting game in motion
