@@ -4,6 +4,10 @@ let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
 let count = 5;
 
+/**
+ * Handles the countdown dislayed that controls
+ * when user can begin playing the game
+ */
 const t = setInterval(function () {
     if (count == 0) {
         player.activate();
