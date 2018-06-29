@@ -2,7 +2,7 @@ const countDown = document.querySelector('#countdown');
 const navMenu = document.querySelector('#myNav');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 5;
+let count = 24;
 
 /**
  * Handles the countdown dislayed that controls
@@ -10,7 +10,11 @@ let count = 5;
  */
 const t = setInterval(function () {
     if (count == 0) {
+        const name = document.querySelector('#player-name');
+        
+        if (name.length > 0 && name.value != '') { player.name = name.value; }
         player.activate();
+
         navMenu.style.width = '0%';
         clearInterval(t);
     } else {
