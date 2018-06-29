@@ -40,6 +40,12 @@ EntityBase.prototype.move = function(direction) {
         default:
             console.log('error');
     }
+
+    /*
+    TODO: 
+        This function should be updated to take able to take a
+        a series of movement [left, up, down] etc
+    */
 }
 
 /**

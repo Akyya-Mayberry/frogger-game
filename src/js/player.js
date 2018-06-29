@@ -23,6 +23,15 @@ Player.prototype.update = function() {
 }
 
 /**
+ * Place player at specific location
+ * @param {placement of player on horizontal axis} x
+ * @param {placement of player on verticle axis} y
+ */
+Player.prototype.setLocation = function(x, y) {
+    if (x > 0 && x < 5 && y > 0 && y < 6) { this.x = x; this.y = y };
+}
+
+/**
  * Moves the player along the x/y axis based
  * @param {direction player attempts to move in} input 
  */

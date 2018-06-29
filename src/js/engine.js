@@ -96,7 +96,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
 
-        player.update();
+        // player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -163,6 +163,7 @@ var Engine = (function(global) {
     function checkCollisions() {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
+                // TODO: Consider moving attack elsewhere to seprate concerns
                 e.attack('Ouch!');
                 return true;
             }
@@ -194,13 +195,15 @@ var Engine = (function(global) {
         for (const e of allEnemies) {
             e.x = KillerBug.prototype.getRandomStart();
         }
-        player.x = 2;
-        player.y = 5;
-
+        
+        player.setLocation(2, 5)
+        
         /*
         TODO:
             Reset probably should be methods on the enemy
-            and player classes
+            and player classes. Also should reset remove all bugs and 
+            create new bugs or do we just do as above and use the same
+            bugs and reset their x value?
         */
     }
 
