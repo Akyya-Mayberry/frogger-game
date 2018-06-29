@@ -6,6 +6,8 @@
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="public/css/style.css">
     <style>
+        /* This styling is based on the nav menu here */
+        /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay*/
         .overlay {
             height: 100%;
             width: 100%;
@@ -21,17 +23,31 @@
 
         .overlay-content {
             position: relative;
-            top: 25%;
+            top: 0;
             width: 100%;
             text-align: center;
-            margin-top: 30px;
+            /* margin: 30px; */
+        }
+
+        .countdown {
+            font-size: 8em;
+        }
+
+        @media screen and (max-height: 450px) {
+            .overlay a {
+                font-size: 20px
+            }
+            .overlay .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
             <h2>Get Ready!</h2>
             <h1 id="countdown" class="countdown"></h1>

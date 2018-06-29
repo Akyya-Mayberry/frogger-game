@@ -1,20 +1,19 @@
+const countDown = document.querySelector('#countdown');
+const navMenu = document.querySelector('#myNav');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 10;
-const countDown = document.querySelector('#countdown');
+let count = 5;
 
 const t = setInterval(function () {
     if (count == 0) {
         player.activate();
+        navMenu.style.width = '0%';
         clearInterval(t);
     } else {
-        count--; countDown.innerHTML = count;
+        countDown.innerHTML = count;
+        count--; 
     }
 }, 1000);
-
-for (const n of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-    countDown.innerHTML = n;
-}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
