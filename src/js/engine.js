@@ -96,7 +96,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
 
-        // player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -163,7 +163,6 @@ var Engine = (function(global) {
     function checkCollisions() {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
-                // TODO: Consider moving attack elsewhere to seprate concerns
                 e.attack('Ouch!');
                 return true;
             }
@@ -185,7 +184,7 @@ var Engine = (function(global) {
      * Resets game - player loses
      */
     function playerHit() {
-        reset();
+        player.hit();
     }
 
     /* Resets most aspects of the game
@@ -196,7 +195,7 @@ var Engine = (function(global) {
             e.x = KillerBug.prototype.getRandomStart();
         }
         
-        player.setLocation(2, 5)
+        player.setLocation(2, 5);
         
         /*
         TODO:

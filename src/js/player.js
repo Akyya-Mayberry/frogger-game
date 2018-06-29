@@ -7,6 +7,8 @@
  */
 function Player(x, y, name="Player 1", sprite = 'public/images/char-boy.png') {
     EntityBase.call(this, x, y, name, sprite);
+    this.camouflage = 1.0
+    this.hurt = 0
 }
 
 Player.prototype = Object.create(EntityBase.prototype);
@@ -16,10 +18,24 @@ Player.prototype.constructor = Player;
  * Decide what to do with this
  */
 Player.prototype.update = function() {
+    
+    // Player collision is animated by altering hurt/camouflage setting.
+    this.hurt == 0 ? this.camouflage = 1.0 : this.hurt--;
+
     /* 
     TODO:
-        Decide what purpose this serves. 
+        Decide what other purposes this serves. 
     */ 
+}
+
+/**
+ * Animates user collision 
+ */
+Player.prototype.hit = function() {
+    
+    player.hurt = 10;
+    this.camouflage = .35;
+    this.setLocation(2, 5);
 }
 
 /**
