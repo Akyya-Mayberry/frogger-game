@@ -24,17 +24,25 @@ const t = setInterval(function () {
     }
 }, 1000);
 
-// Listen for changes in avatar
-avatars.addEventListener('click', function (e) {
+/**
+ * Updates selected avatar
+ * @param {Event target} e 
+ */
+const updateAvatar = function (e) {
     if (e.target.nodeName === 'IMG') {
+
         const src = e.target.src.split('/');
         filename = src[src.length - 1];
+        
         player.changeSprite(filename);
 
         document.querySelector('.selected').classList.remove('selected');
         e.target.classList.add('selected');
     }
-});
+}
+
+// Listen for changes in avatar
+avatars.addEventListener('click', updateAvatar);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
