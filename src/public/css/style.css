@@ -9,6 +9,7 @@ body {
     align-content: space-around;
     align-items: center;
     width: 100%;
+    opacity: 0;
 }
 
 .stats header {
@@ -23,7 +24,6 @@ body {
     align-self: center;
     width: 100%;
     max-width: 505px;
-    opacity: 0;
 }
 
 .stats-life {

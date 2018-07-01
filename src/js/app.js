@@ -1,14 +1,20 @@
 const countDown = document.querySelector('#countdown');
 const navMenu = document.querySelector('#nav-menu');
 const gameOver = document.querySelector('#game-over');
+const playAgainButton = document.querySelector('#play-again');
 const avatars = document.querySelector('#avatars');
+const defaultPlayer = document.querySelector('#default-avatar');
+const stats = document.querySelector('#stats');
+const lives =  document.querySelectorAll('.stats-life');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 3;
+let count = 14;
 
 function init() {
+    stats.style.opacity = 0;
     navMenu.style.width = '100%';
     gameOver.style.width = '0';
+    countdown();
 }
 
 init()
@@ -19,15 +25,14 @@ init()
 function startGame() {
     document.querySelector('.canvas').width = 505;
     document.querySelector('.canvas').height = 606;
+    
     const name = document.querySelector('#player-name');
-    
     if (name.value != '') { player.name = name.value; }
-    player.activate();
     
+    player.activate();
     navMenu.style.width = '0%';
     
-    // document.querySelector('.stats-lives').style.display = 'initial';
-    document.querySelector('.stats-lives').style.opacity = '1';
+    stats.style.opacity = 1;
     document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
 }
 
@@ -35,15 +40,17 @@ function startGame() {
  * Handles the countdown dislayed that controls
  * when user can begin playing the game
  */
-const t = setInterval(function () {
-    if (count == 0) {
-        startGame();
-        clearInterval(t);
-    } else {
-        countDown.innerHTML = count;
-        count--;
-    }
-}, 1000);
+function countdown() {
+    const t = setInterval(function () {
+        if (count == 0) {
+            startGame();
+            clearInterval(t);
+        } else {
+            countDown.innerHTML = count;
+            count--;
+        }
+    }, 1000);
+}
 
 /**
  * Updates selected avatar
@@ -51,19 +58,39 @@ const t = setInterval(function () {
  */
 const updateAvatar = function (e) {
     if (e.target.nodeName === 'IMG') {
-
+        console.log('in lives');
         const src = e.target.src.split('/');
         filename = src[src.length - 1];
-
+        console.log('filename: ', filename);
         player.changeSprite(filename);
-
+        console.log('player: ', player);
         document.querySelector('.selected').classList.remove('selected');
         e.target.classList.add('selected');
 
-        for (const life of document.querySelectorAll('.stats-life')) {
+        for (const life of lives) {
             life.src = e.target.src;
         }
     }
+}
+
+/**
+ * Resets game to player profile selection
+ */
+function setupPlayer() {
+    allEnemies = KillerBug.prototype.makeBugs();
+    player = new Player();
+    count = 10;
+
+    document.querySelector('#stats').style.opacity = '0';
+    navMenu.style.width = '100%';
+    gameOver.style.width = '0';
+    
+    // document.querySelector('.stats-lives').style.opacity = '0';
+
+    document.querySelector('.selected').classList.remove('selected');
+    defaultPlayer.classList.add('selected');
+
+    countdown();
 }
 
 // Listen for changes in avatar
@@ -80,4 +107,11 @@ document.addEventListener('keyup', function (e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+/**
+ * Listens for clicking of restart button
+ */
+playAgainButton.addEventListener('click', function(e) {
+    setupPlayer();
 });

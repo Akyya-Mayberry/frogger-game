@@ -5,7 +5,7 @@
  * @param {name of player} name 
  * @param {image to use for player} sprite 
  */
-function Player(x, y, name="Player 1", sprite = 'char-boy.png') {
+function Player(x = 2, y = 5, name="Player 1", sprite = 'char-boy.png') {
     EntityBase.call(this, x, y, name, sprite);
     this.activated = false;
     this.camouflage = 1.0;
