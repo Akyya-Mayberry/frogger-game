@@ -103,7 +103,7 @@ var Engine = (function (global) {
             enemy.update(dt);
         });
 
-        player.update();
+        playerState = player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -193,6 +193,17 @@ var Engine = (function (global) {
      */
     function playerHit() {
         player.hit();
+        const isAlive = player.isAlive();
+
+        if (!isAlive) { player.kill(); gameOver();} 
+    }
+
+    /**
+     * Displays game over overlay
+     */
+    function gameOver() {
+        const gameOver = document.querySelector('#game-over');
+        gameOver.style.width = '100%';
     }
 
     /* Resets most aspects of the game

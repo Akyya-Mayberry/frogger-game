@@ -1,10 +1,14 @@
 /* This styling is based on the nav menu listed below. */
-/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_overlay*/
+/* https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp*/
 
 
 .overlay {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
     height: 100%;
-    width: 100%;
+    width: 0%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -16,6 +20,7 @@
 }
 
 .overlay-content {
+    align-self: center;
     position: relative;
     top: 0;
     width: 100%;
@@ -36,6 +41,15 @@
     border: 1px solid salmon;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 120px;
+}
+
+.game-over.overlay {
+    align-self: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
 }
 
 @media screen and (max-height: 450px) {

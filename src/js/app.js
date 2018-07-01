@@ -1,9 +1,17 @@
 const countDown = document.querySelector('#countdown');
-const navMenu = document.querySelector('#myNav');
+const navMenu = document.querySelector('#nav-menu');
+const gameOver = document.querySelector('#game-over');
 const avatars = document.querySelector('#avatars');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
 let count = 3;
+
+function init() {
+    navMenu.style.width = '100%';
+    gameOver.style.width = '0';
+}
+
+init()
 
 /**
  * Handles all set up for setting game in motion
