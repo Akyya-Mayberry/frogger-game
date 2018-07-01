@@ -3,20 +3,24 @@ const navMenu = document.querySelector('#myNav');
 const avatars = document.querySelector('#avatars');
 let allEnemies = KillerBug.prototype.makeBugs();
 let player = new Player();
-let count = 14;
+let count = 3;
 
 /**
  * Handles all set up for setting game in motion
  */
 function startGame() {
+    document.querySelector('.canvas').width = 505;
+    document.querySelector('.canvas').height = 606;
     const name = document.querySelector('#player-name');
     
     if (name.value != '') { player.name = name.value; }
     player.activate();
-
+    
     navMenu.style.width = '0%';
-
-    document.querySelector('#stats').innerHTML = `Go ${player.name}!`;
+    
+    // document.querySelector('.stats-lives').style.display = 'initial';
+    document.querySelector('.stats-lives').style.opacity = '1';
+    document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
 }
 
 /**
@@ -47,6 +51,10 @@ const updateAvatar = function (e) {
 
         document.querySelector('.selected').classList.remove('selected');
         e.target.classList.add('selected');
+
+        for (const life of document.querySelectorAll('.stats-life')) {
+            life.src = e.target.src;
+        }
     }
 }
 

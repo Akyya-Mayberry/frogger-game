@@ -27,6 +27,7 @@ Enemy.prototype.resetLocation = function() {
  */
 Enemy.prototype.attack = function() {
     this.camouflage = 1.0;
+    this.speed = 10;
     // alert(`Ouch! Hit. ${this.name} attacked!`);
 }
 

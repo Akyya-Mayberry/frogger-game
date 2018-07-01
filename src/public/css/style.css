@@ -4,4 +4,32 @@ body {
 
 .stats {
     margin-bottom: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.stats header {
+    font-size: 3em;
+}
+
+.stats-lives {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    max-width: 505px;
+    opacity: 0;
+}
+
+.stats-life {
+    align-self: flex-end;
+    margin-bottom: -50px;
+    margin-top: -50px;
+    flex: 0;
+    width: 10%;
 }
