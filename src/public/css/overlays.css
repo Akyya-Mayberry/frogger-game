@@ -1,0 +1,103 @@
+/* This styling is based on the nav menu listed below with modifications. */
+/* https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp*/
+
+/* Global settings for overlays */
+.overlay {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.532);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    align-self: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+/* Profile Setup Overlay */
+
+/* Timer section */
+section.timer-section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    order: -1;
+    width: 100%;
+    /* width :50%; */
+}
+
+.countdown {
+    font-size: 8em;
+    width: 20%;
+}
+
+.start-btn {
+    width: 40%;
+    margin-top: 20px;
+}
+
+/* Player name section */
+.overlay-content section.avatar-name {
+    display: flex;
+    flex-flow: column;
+    order: 20;
+    /* flex: 1; */
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 50%;
+}
+
+label {
+    font-size: 2em;
+}
+
+/* Avatar Selection */
+.avatar-selection {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    order: 20;
+}
+
+.avatars img {
+    width: 100px;
+}
+
+img.selected {
+    border: 1px solid salmon;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 140px;
+}
+
+/* Profile Setup Overlay */
+.overlay.game-over {
+    justify-content: space-evenly;
+}
+
+
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px
+    }
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}

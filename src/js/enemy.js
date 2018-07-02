@@ -26,7 +26,9 @@ Enemy.prototype.resetLocation = function() {
  * Displays name of enemy that attack
  */
 Enemy.prototype.attack = function() {
-    alert(`Ouch! Hit. ${this.name} attacked!`);
+    this.camouflage = 1.0;
+    this.speed = 10;
+    // alert(`Ouch! Hit. ${this.name} attacked!`);
 }
 
 /**
@@ -61,7 +63,7 @@ Enemy.prototype.update = function(dt) {
  * @param {transparency ability - harder to see} camouflage 
  */
 function KillerBug(x, y, camouflage = 100) {
-    Enemy.call(this, x, y, 'Killer Bug', 'public/images/enemy-bug.png');
+    Enemy.call(this, x, y, 'Killer Bug', 'enemy-bug.png');
     this.camouflage = camouflage;
 }
 
