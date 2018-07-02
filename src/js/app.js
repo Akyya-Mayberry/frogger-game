@@ -1,4 +1,4 @@
-const countDown = document.querySelector('#countdown');
+const time = document.querySelector('#countdown');
 const navMenu = document.querySelector('#nav-menu');
 const gameOver = document.querySelector('#game-over');
 const playAgainButton = document.querySelector('#play-again');
@@ -6,15 +6,18 @@ const avatars = document.querySelector('#avatars');
 const defaultPlayer = document.querySelector('#default-avatar');
 const stats = document.querySelector('#stats');
 const lives =  document.querySelectorAll('.stats-life');
-let allEnemies = KillerBug.prototype.makeBugs();
-let player = new Player();
-let count = 14;
+const canvas = document.querySelector('.canvas');
+let allEnemies;
+let player;
+let countdown;
 
 function init() {
-    stats.style.opacity = 0;
-    navMenu.style.width = '100%';
-    gameOver.style.width = '0';
-    countdown();
+    player = new Player();
+    allEnemies = KillerBug.prototype.makeBugs();
+    displayStats(false);
+    displayMenu();
+    displayGameOver(false);
+    timer(25);
 }
 
 init()
@@ -26,29 +29,27 @@ function startGame() {
     document.querySelector('.canvas').width = 505;
     document.querySelector('.canvas').height = 606;
     
-    // const name = document.querySelector('#player-name');
-    // if (name.value != '') { player.name = name.value; }
-    // stats.style.opacity = 1;
-    // document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
     displayStats();
+    displayMenu(false);
     
     player.activate();
-    navMenu.style.width = '0%';
-    
 }
 
 /**
- * Handles the countdown dislayed that controls
+ * Handles the timer dislayed that controls
  * when user can begin playing the game
  */
-function countdown() {
+function timer(count = 10) {
+    countdown = count;
+    time.innerHTML = countdown;
+    
     const t = setInterval(function () {
-        if (count == 0) {
+        if (countdown == 0) {
             startGame();
             clearInterval(t);
         } else {
-            countDown.innerHTML = count;
-            count--;
+            time.innerHTML = countdown;
+            countdown--;
         }
     }, 1000);
 }
@@ -85,32 +86,48 @@ const updateAvatar = function (e) {
  * Resets game to player profile selection
  */
 function setupPlayer() {
-    allEnemies = KillerBug.prototype.makeBugs();
     player = new Player();
-    count = 10;
 
-    document.querySelector('#stats').style.opacity = '0';
+    displayStats(false);
     setUpLives();
-
-    navMenu.style.width = '100%';
-    gameOver.style.width = '0';
+    displayMenu();
+    displayGameOver(false);
     
-    // document.querySelector('.stats-lives').style.opacity = '0';
-
     document.querySelector('.selected').classList.remove('selected');
     defaultPlayer.classList.add('selected');
 
-    countdown();
+    timer(15);
 }
 
 /**
  * Displays stats like player name and lives on screen
+ * @param {boolean indicating whether to show stats} show 
  */
-function displayStats() {
-    const name = document.querySelector('#player-name');
-    if (name.value != '') { player.name = name.value; }
-    stats.style.opacity = 1;
-    document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
+function displayStats(show = true) {
+    if (show) {
+        const name = document.querySelector('#player-name');
+        if (name.value != '') { player.name = name.value; }
+        stats.style.opacity = '1';
+        document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
+    } else {
+        stats.style.opacity = '0';
+    }
+}
+
+/**
+ * Displays/hides game menu overlay for profile setup
+ * @param {boolean indicating whether to show menu} show 
+ */
+function displayMenu(show = true) {
+    navMenu.style.width = show ? '100%' : '0';
+}
+
+/**
+ * Displays/hides gameover overlay for profile setup
+ * @param {boolean indicating whether to show gameover} show 
+ */
+function displayGameOver(show = true) {
+    gameOver.style.width = show ? '100%' : '0';
 }
 
 ////////////////////////////////////////////////////
@@ -136,5 +153,6 @@ document.addEventListener('keyup', function (e) {
  * Listens for clicking of restart button
  */
 playAgainButton.addEventListener('click', function(e) {
+    allEnemies = KillerBug.prototype.makeBugs();
     setupPlayer();
 });
