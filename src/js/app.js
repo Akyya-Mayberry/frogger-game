@@ -7,6 +7,7 @@ const defaultPlayer = document.querySelector('#default-avatar');
 const stats = document.querySelector('#stats');
 const lives =  document.querySelectorAll('.stats-life');
 const canvas = document.querySelector('.canvas');
+const goButton = document.querySelector('#start-btn');
 let allEnemies;
 let player;
 let countdown;
@@ -17,7 +18,7 @@ function init() {
     displayStats(false);
     displayMenu();
     displayGameOver(false);
-    timer(80);
+    timer(11);
 }
 
 init()
@@ -135,6 +136,9 @@ function displayGameOver(show = true) {
 
 // Listen for changes in avatar
 avatars.addEventListener('click', updateAvatar);
+
+// Overrids the countdown to automatically start game
+goButton.addEventListener('click', function() { countdown = 0; });
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

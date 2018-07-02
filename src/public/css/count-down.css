@@ -34,14 +34,12 @@
 
 .countdown {
     font-size: 8em;
-    /* margin: 0; */
+    width: 20%;
 }
 
 .avatars img {
     width: 100px;
 }
-
-
 
 img.selected {
     border: 1px solid salmon;
@@ -86,14 +84,6 @@ section.timer-section {
 
 label {
     font-size: 2em;
-    color: cadetblue;
-}
-
-.player-name {
-    /* width: 50%; */
-    /* text-align: center; */
-    /* margin: 0 auto; */
-    /* align-self: center; */
 }
 
 .avatar-selection {
