@@ -1,10 +1,10 @@
-/* This styling is based on the nav menu listed below. */
+/* This styling is based on the nav menu listed below with modifications. */
 /* https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp*/
 
-
+/* Global settings for overlays */
 .overlay {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
@@ -23,39 +23,14 @@
     align-self: center;
     display: flex;
     flex-flow: column;
-    justify-content: space-evenly;
-    align-items: center;
-    position: relative;
-    /* top: 0; */
-    width: 100%;
-    text-align: center;
-    /* margin: 0px; */
-}
-
-.countdown {
-    font-size: 8em;
-    width: 20%;
-}
-
-.avatars img {
-    width: 100px;
-}
-
-img.selected {
-    border: 1px solid salmon;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 140px;
-}
-
-.game-over.overlay {
-    align-self: center;
-    display: flex;
-    flex-flow: column nowrap;
     justify-content: space-around;
-    align-content: center;
     align-items: center;
+    width: 100%;
 }
 
+/* Profile Setup Overlay */
+
+/* Timer section */
 section.timer-section {
     display: flex;
     flex-flow: row wrap;
@@ -66,11 +41,17 @@ section.timer-section {
     /* width :50%; */
 }
 
+.countdown {
+    font-size: 8em;
+    width: 20%;
+}
+
 .start-btn {
     width: 40%;
     margin-top: 20px;
 }
 
+/* Player name section */
 .overlay-content section.avatar-name {
     display: flex;
     flex-flow: column;
@@ -86,6 +67,7 @@ label {
     font-size: 2em;
 }
 
+/* Avatar Selection */
 .avatar-selection {
     display: flex;
     flex-flow: column;
@@ -93,15 +75,21 @@ label {
     order: 20;
 }
 
-/* .avatar-selection {
-    display: flex;
-    flex-flow: column wrap;
-    order: 20;
-    flex: 4;
-    justify-content: center;
-    align-items: center;
-    /* width: 100%; */
-} */
+.avatars img {
+    width: 100px;
+}
+
+img.selected {
+    border: 1px solid salmon;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 140px;
+}
+
+/* Profile Setup Overlay */
+.overlay.game-over {
+    justify-content: space-evenly;
+}
+
 
 @media screen and (max-height: 450px) {
     .overlay a {
