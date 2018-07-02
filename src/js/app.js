@@ -26,14 +26,15 @@ function startGame() {
     document.querySelector('.canvas').width = 505;
     document.querySelector('.canvas').height = 606;
     
-    const name = document.querySelector('#player-name');
-    if (name.value != '') { player.name = name.value; }
+    // const name = document.querySelector('#player-name');
+    // if (name.value != '') { player.name = name.value; }
+    // stats.style.opacity = 1;
+    // document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
+    displayStats();
     
     player.activate();
     navMenu.style.width = '0%';
     
-    stats.style.opacity = 1;
-    document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
 }
 
 /**
@@ -53,23 +54,30 @@ function countdown() {
 }
 
 /**
+ * Sets the display image for player lives in stats section
+ * @param {full path to image} src 
+ */
+function setUpLives(src=defaultPlayer.src) {
+    for (const life of lives) {
+        life.src = src;
+    }
+}
+
+/**
  * Updates selected avatar
  * @param {Event target} e 
  */
 const updateAvatar = function (e) {
     if (e.target.nodeName === 'IMG') {
-        console.log('in lives');
         const src = e.target.src.split('/');
         filename = src[src.length - 1];
-        console.log('filename: ', filename);
+        
         player.changeSprite(filename);
-        console.log('player: ', player);
+        
         document.querySelector('.selected').classList.remove('selected');
         e.target.classList.add('selected');
 
-        for (const life of lives) {
-            life.src = e.target.src;
-        }
+        setUpLives(e.target.src);
     }
 }
 
@@ -82,6 +90,8 @@ function setupPlayer() {
     count = 10;
 
     document.querySelector('#stats').style.opacity = '0';
+    setUpLives();
+
     navMenu.style.width = '100%';
     gameOver.style.width = '0';
     
@@ -92,6 +102,19 @@ function setupPlayer() {
 
     countdown();
 }
+
+/**
+ * Displays stats like player name and lives on screen
+ */
+function displayStats() {
+    const name = document.querySelector('#player-name');
+    if (name.value != '') { player.name = name.value; }
+    stats.style.opacity = 1;
+    document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
+}
+
+////////////////////////////////////////////////////
+// Listeners
 
 // Listen for changes in avatar
 avatars.addEventListener('click', updateAvatar);
