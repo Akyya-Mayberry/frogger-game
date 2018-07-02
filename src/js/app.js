@@ -17,7 +17,7 @@ function init() {
     displayStats(false);
     displayMenu();
     displayGameOver(false);
-    timer(25);
+    timer(80);
 }
 
 init()

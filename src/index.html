@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/count-down.css">
 </head>
@@ -19,16 +21,23 @@
     </div>
     <div id="nav-menu" class="overlay">
         <div class="overlay-content">
-            <h2>Get Ready!</h2>
-            <h1 id="countdown" class="countdown">15</h1>
-            <label for="player-name">Player Name</label>
-            <input type="text" name="player-name" id="player-name" placeholder="enter name">
-            <h3>Select Player</h3>
-            <div class="avatars" id="avatars">
-                <img src="public/images/char-cat-girl.png">
-                <img id="default-avatar" class="selected" src="public/images/char-boy.png">
-                <img src="public/images/char-princess-girl.png">
-            </div>
+            <section class="timer-section">
+                <h2>Get Ready!</h2>
+                <h1 id="countdown" class="countdown">15</h1>
+                <button id="start-btn" class="btn btn-success start-btn">Go!</button>
+                <section class="avatar-name form-group">
+                    <label for="player-name">Player Name</label>
+                    <input type="text" class="form-control form-control-sm player-name" name="player-name" id="player-name" placeholder="enter name">
+                </section>
+            </section>
+            <section class="avatar-selection">
+                <h3>Select Player</h3>
+                <div class="avatars" id="avatars">
+                    <img src="public/images/char-cat-girl.png">
+                    <img id="default-avatar" class="selected" src="public/images/char-boy.png">
+                    <img src="public/images/char-princess-girl.png">
+                </div>
+            </section>
         </div>
     </div>
     <div id="game-over" class="overlay game-over">
@@ -37,6 +46,10 @@
             <button id='play-again'>Play Again</button>
         </div>
     </div>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/entity.js"></script>
     <script src="js/enemy.js"></script>
