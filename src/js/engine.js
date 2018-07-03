@@ -183,8 +183,7 @@ var Engine = (function (global) {
      */
     function checkIsWinner() {
         if (player.y === 0) {
-            alert('Winner!');
-            reset();
+            displayWonGame(true);
         }
     }
 
@@ -195,7 +194,7 @@ var Engine = (function (global) {
         player.hit();
         const isAlive = player.isAlive();
 
-        if (!isAlive) { player.kill(); gameOver();} 
+        if (!isAlive) { player.kill(); gameOver(); }
     }
 
     /**

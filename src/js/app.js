@@ -1,11 +1,11 @@
 const time = document.querySelector('#countdown');
 const navMenu = document.querySelector('#nav-menu');
 const gameOver = document.querySelector('#game-over');
-const playAgainButton = document.querySelector('#play-again');
+const wonGame = document.querySelector('#won-game');
 const avatars = document.querySelector('#avatars');
 const defaultPlayer = document.querySelector('#default-avatar');
 const stats = document.querySelector('#stats');
-const lives =  document.querySelectorAll('.stats-life');
+const lives = document.querySelectorAll('.stats-life');
 const canvas = document.querySelector('.canvas');
 const goButton = document.querySelector('#start-btn');
 let allEnemies;
@@ -29,10 +29,10 @@ init()
 function startGame() {
     document.querySelector('.canvas').width = 505;
     document.querySelector('.canvas').height = 606;
-    
+
     displayStats();
     displayMenu(false);
-    
+
     player.activate();
 }
 
@@ -43,7 +43,7 @@ function startGame() {
 function timer(count = 10) {
     countdown = count;
     time.innerHTML = countdown;
-    
+
     const t = setInterval(function () {
         if (countdown == 0) {
             startGame();
@@ -59,7 +59,7 @@ function timer(count = 10) {
  * Sets the display image for player lives in stats section
  * @param {full path to image} src 
  */
-function setUpLives(src=defaultPlayer.src) {
+function setUpLives(src = defaultPlayer.src) {
     for (const life of lives) {
         life.src = src;
     }
@@ -73,9 +73,9 @@ const updateAvatar = function (e) {
     if (e.target.nodeName === 'IMG') {
         const src = e.target.src.split('/');
         filename = src[src.length - 1];
-        
+
         player.changeSprite(filename);
-        
+
         document.querySelector('.selected').classList.remove('selected');
         e.target.classList.add('selected');
 
@@ -93,7 +93,8 @@ function setupPlayer() {
     setUpLives();
     displayMenu();
     displayGameOver(false);
-    
+    displayWonGame(false);
+
     document.querySelector('.selected').classList.remove('selected');
     defaultPlayer.classList.add('selected');
 
@@ -131,6 +132,14 @@ function displayGameOver(show = true) {
     gameOver.style.width = show ? '100%' : '0';
 }
 
+/**
+ * Displays/hides won game overlay
+ * @param {boolean indicating whether to show won game} show 
+ */
+function displayWonGame(show = true) {
+    wonGame.style.width = show ? '100%' : '0';
+}
+
 ////////////////////////////////////////////////////
 // Listeners
 
@@ -138,7 +147,7 @@ function displayGameOver(show = true) {
 avatars.addEventListener('click', updateAvatar);
 
 // Overrids the countdown to automatically start game
-goButton.addEventListener('click', function() { countdown = 0; });
+goButton.addEventListener('click', function () { countdown = 0; });
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -156,7 +165,10 @@ document.addEventListener('keyup', function (e) {
 /**
  * Listens for clicking of restart button
  */
-playAgainButton.addEventListener('click', function(e) {
-    allEnemies = KillerBug.prototype.makeBugs();
-    setupPlayer();
+document.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'BUTTON' &&
+        e.target.classList.contains('play-again')) {
+        allEnemies = KillerBug.prototype.makeBugs();
+        setupPlayer();
+    }
 });

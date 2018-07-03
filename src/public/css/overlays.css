@@ -86,7 +86,8 @@ img.selected {
 }
 
 /* Profile Setup Overlay */
-.overlay.game-over {
+.overlay.game-over, 
+.overlay.won-game {
     justify-content: space-evenly;
 }
 
