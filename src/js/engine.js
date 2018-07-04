@@ -183,6 +183,7 @@ var Engine = (function (global) {
      */
     function checkIsWinner() {
         if (player.y === 0) {
+            player.kill();
             displayWonGame(true);
         }
     }
