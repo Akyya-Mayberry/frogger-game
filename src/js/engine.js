@@ -202,8 +202,7 @@ var Engine = (function (global) {
      * Displays game over overlay
      */
     function gameOver() {
-        const gameOver = document.querySelector('#game-over');
-        gameOver.style.width = '100%';
+        displayGameOver(true);
     }
 
     /* Resets most aspects of the game

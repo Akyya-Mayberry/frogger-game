@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -13,25 +13,26 @@
 <body>
 
     <!-- Stats Section -->
-    <div class="stats" id="stats">
-        <header id="stats-header"></header>
-        <section class="stats-lives">
-            <img class="stats-life" src="public/images/char-boy.png">
-            <img class="stats-life" src="public/images/char-boy.png">
-            <img class="stats-life" src="public/images/char-boy.png">
-        </section>
-    </div>
+    <section class="stats" id="stats">
+        <h1 id="stats-header">Player 1</h1>
+        <p class="stats-lives">
+            <img class="stats-life" src="public/images/char-boy.png" alt="boy character">
+            <img class="stats-life" src="public/images/char-boy.png" alt="boy character">
+            <img class="stats-life" src="public/images/char-boy.png" alt="boy character">
+        </p>
+    </section>
 
     <!-- Overlay Main Menu -->
     <div id="nav-menu" class="overlay">
         <div class="overlay-content">
 
             <section class="timer-section">
-                <h2>Get Ready!</h2>
+                <h1>Get Ready!</h1>
                 <h1 id="countdown" class="countdown">15</h1>
                 <button id="start-btn" class="btn btn-success start-btn">Go!</button>
                 <section class="avatar-name form-group">
-                    <label for="player-name">Player Name</label>
+                    <h2 class="player-name-header">Player Name</h2>
+                    <label for="player-name" class="sr-only">Player Name</label>
                     <input type="text" class="form-control form-control-sm player-name" name="player-name" id="player-name" placeholder="enter name">
                 </section>
             </section>
@@ -39,12 +40,12 @@
             <section class="avatar-selection">
                 <h3>Select Player</h3>
                 <div class="avatars" id="avatars">
-                    <img src="public/images/char-cat-girl.png">
-                    <img id="default-avatar" class="selected" src="public/images/char-boy.png">
-                    <img src="public/images/char-princess-girl.png">
+                    <img src="public/images/char-cat-girl.png" alt="cat girl character">
+                    <img id="default-avatar" class="selected" src="public/images/char-boy.png" alt="boy character">
+                    <img src="public/images/char-princess-girl.png" alt="princess character">
                 </div>
-
             </section>
+
         </div>
     </div>
 
