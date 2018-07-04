@@ -1,0 +1,24 @@
+{
+  "name": "frogger-game",
+  "version": "1.0.0",
+  "description": "frogger game",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollywoodno/frogger-game.git"
+  },
+  "author": "akyya mayberry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hollywoodno/frogger-game/issues"
+  },
+  "homepage": "https://github.com/hollywoodno/frogger-game#readme",
+  "devDependencies": {
+    "webpack": "^4.15.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
