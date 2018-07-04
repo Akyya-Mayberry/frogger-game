@@ -25,7 +25,7 @@
     <!-- Overlay Main Menu -->
     <div id="nav-menu" class="overlay">
         <div class="overlay-content">
-            
+
             <section class="timer-section">
                 <h2>Get Ready!</h2>
                 <h1 id="countdown" class="countdown">15</h1>
@@ -35,7 +35,7 @@
                     <input type="text" class="form-control form-control-sm player-name" name="player-name" id="player-name" placeholder="enter name">
                 </section>
             </section>
-            
+
             <section class="avatar-selection">
                 <h3>Select Player</h3>
                 <div class="avatars" id="avatars">
@@ -43,7 +43,7 @@
                     <img id="default-avatar" class="selected" src="public/images/char-boy.png">
                     <img src="public/images/char-princess-girl.png">
                 </div>
-            
+
             </section>
         </div>
     </div>
@@ -52,12 +52,20 @@
     <div id="game-over" class="overlay game-over">
         <div class="overlay-content">
             <h2>Womp womp...Game over!</h2>
-            <button class="btn btn-danger" id='play-again'>Play Again</button>
+            <button class="btn btn-danger play-again">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Won Game Overlay -->
+    <div id="won-game" class="overlay won-game">
+        <div class="overlay-content">
+            <h2>You won! Nice moves!</h2>
+            <button class="btn btn-success play-again">Play Again</button>
         </div>
     </div>
 
     <!-- Scripts -->
-   
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/resources.js"></script>
