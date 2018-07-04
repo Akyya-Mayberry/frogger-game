@@ -67,6 +67,10 @@ label {
     font-size: 2em;
 }
 
+.player-name-header {
+    font-size: 2em;
+}
+
 /* Avatar Selection */
 .avatar-selection {
     display: flex;
