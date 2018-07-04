@@ -1,0 +1,34 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "only-arrow-functions": false,
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "promise-function-async": true,
+        "no-console": false,
+        "prefer-for-of": true,
+        "no-unused-variable": false,
+        "prefer-const": [
+            false,
+            {
+                "destructuring": "all"
+            }
+        ],
+        "trailing-comma": false,
+        "object-curly-spacing": [
+            true,
+            "always"
+        ],
+        "object-literal-sort-keys": false,
+        "one-variable-per-declaration": false,
+        "no-debugger": false,
+        "no-var-keyword": false,
+    },
+    "rulesDirectory": []
+}
