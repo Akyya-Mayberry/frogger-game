@@ -9,7 +9,7 @@ const EntityBase = function(x = 0, y = 0, name, sprite) {
     this.x = x;
     this.y = y;
     this.name = name;
-    this.sprite = `public/images/${sprite}`;
+    this.sprite = `../src/public/images/${sprite}`;
 };
 
 /**
@@ -23,7 +23,7 @@ EntityBase.prototype.getLocation = function() {
  * Updates the sprite
  */
 EntityBase.prototype.changeSprite = function(sprite) {
-    this.sprite = `public/images/${sprite}`;
+    this.sprite = `../src/public/images/${sprite}`;
 }
 
 /**

@@ -6,8 +6,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         main: './dist/js/index.js',
-        // card: './src/js/card.js',
-        app: './src/js/app.js'
+        app: './dist/js/app.js'
     },
     devtool: 'inline-source-map',
     output: {
@@ -19,6 +18,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html'
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     ],
     module: {

@@ -72,7 +72,7 @@ function setUpLives(src = defaultPlayer.src) {
 const updateAvatar = function (e) {
     if (e.target.nodeName === 'IMG') {
         const src = e.target.src.split('/');
-        filename = src[src.length - 1];
+        const filename = src[src.length - 1];
 
         player.changeSprite(filename);
 

@@ -103,7 +103,7 @@ var Engine = (function (global) {
             enemy.update(dt);
         });
 
-        playerState = player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -117,12 +117,12 @@ var Engine = (function (global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-            'public/images/water-block.png',   // Top row is water
-            'public/images/stone-block.png',   // Row 1 of 3 of stone
-            'public/images/stone-block.png',   // Row 2 of 3 of stone
-            'public/images/stone-block.png',   // Row 3 of 3 of stone
-            'public/images/grass-block.png',   // Row 1 of 2 of grass
-            'public/images/grass-block.png'    // Row 2 of 2 of grass
+            '../src/public/images/water-block.png',   // Top row is water
+            '../src/public/images/stone-block.png',   // Row 1 of 3 of stone
+            '../src/public/images/stone-block.png',   // Row 2 of 3 of stone
+            '../src/public/images/stone-block.png',   // Row 3 of 3 of stone
+            '../src/public/images/grass-block.png',   // Row 1 of 2 of grass
+            '../src/public/images/grass-block.png'    // Row 2 of 2 of grass
         ],
             numRows = 6,
             numCols = 5,
@@ -229,13 +229,13 @@ var Engine = (function (global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'public/images/stone-block.png',
-        'public/images/water-block.png',
-        'public/images/grass-block.png',
-        'public/images/enemy-bug.png',
-        'public/images/char-boy.png',
-        'public/images/char-princess-girl.png',
-        'public/images/char-cat-girl.png'
+        '../src/public/images/stone-block.png',
+        '../src/public/images/water-block.png',
+        '../src/public/images/grass-block.png',
+        '../src/public/images/enemy-bug.png',
+        '../src/public/images/char-boy.png',
+        '../src/public/images/char-princess-girl.png',
+        '../src/public/images/char-cat-girl.png'
     ]);
     Resources.onReady(init);
 
