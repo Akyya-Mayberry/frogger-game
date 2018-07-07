@@ -10,7 +10,7 @@ const canvas = document.querySelector('.canvas');
 const goButton = document.querySelector('#start-btn');
 let allEnemies;
 let player;
-let countdown;
+let countdown: number;
 
 function init() {
     player = new Player();
@@ -42,14 +42,14 @@ function startGame() {
  */
 function timer(count = 10) {
     countdown = count;
-    time.innerHTML = countdown;
+    time!.innerHTML = `${countdown}`;
 
     const t = setInterval(function () {
         if (countdown == 0) {
             startGame();
             clearInterval(t);
         } else {
-            time.innerHTML = countdown;
+            time!.innerHTML = `${countdown}`;
             countdown--;
         }
     }, 1000);
@@ -59,7 +59,7 @@ function timer(count = 10) {
  * Sets the display image for player lives in stats section
  * @param {full path to image} src 
  */
-function setUpLives(src = defaultPlayer.src) {
+function setUpLives(src = defaultPlayer!.src) {
     for (const life of lives) {
         life.src = src;
     }

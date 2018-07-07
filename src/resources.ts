@@ -6,14 +6,14 @@
  */
 (function() {
     var resourceCache = {};
-    var loading = [];
-    var readyCallbacks = [];
+    // var loading = [];
+    var readyCallbacks: any[] = [];
 
     /* This is the publicly accessible image loading function. It accepts
      * an array of strings pointing to image files or a string for a single
      * image. It will then call our private image loading function accordingly.
      */
-    function load(urlOrArr) {
+    function load(urlOrArr: any) {
         if(urlOrArr instanceof Array) {
             /* If the developer passed in an array of images
              * loop through each value and call our image
@@ -34,7 +34,7 @@
     /* This is our private image loader function, it is
      * called by the public image loader function.
      */
-    function _load(url) {
+    function _load(url: string) {
         if(resourceCache[url]) {
             /* If this URL has been previously loaded it will exist within
              * our resourceCache array. Just return that image rather
@@ -58,6 +58,7 @@
                  */
                 if(isReady()) {
                     readyCallbacks.forEach(function(func) { func(); });
+                    console.log('cache!!!!: ', typeof resourceCache[url]);
                 }
             };
 
@@ -74,7 +75,7 @@
      * have been previously loaded. If an image is cached, this functions
      * the same as calling load() on that URL.
      */
-    function get(url) {
+    function get(url: string) {
         return resourceCache[url];
     }
 
@@ -95,14 +96,14 @@
     /* This function will add a function to the callback stack that is called
      * when all requested images are properly loaded.
      */
-    function onReady(func) {
+    function onReady(func: any) {
         readyCallbacks.push(func);
     }
 
     /* This object defines the publicly accessible functions available to
      * developers by creating a global Resources object.
      */
-    window.Resources = {
+    (<any>window).Resources = {
         load: load,
         get: get,
         onReady: onReady,
