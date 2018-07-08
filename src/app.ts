@@ -23,6 +23,7 @@ function init() {
     displayMenu();
     displayGameOver(false);
     timer(11);
+
 }
 
 init()

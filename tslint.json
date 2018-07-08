@@ -5,7 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
-        "only-arrow-functions": false,
+        "only-arrow-functions": true,
         "quotemark": [
             true,
             "single"
