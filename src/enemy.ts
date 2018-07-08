@@ -10,7 +10,7 @@ import EntityBase from './entity';
 function Enemy(x, y, name, sprite) {
     EntityBase.call(this, x, y, name, sprite);
     this.speed = this.getRandomSpeed();
-    this.baseLocation = {x: x, y: y};
+    this.baseLocation = {x, y};
 }
 
 Enemy.prototype = Object.create(EntityBase.prototype);
@@ -39,7 +39,7 @@ Enemy.prototype.attack = function() {
  */
 Enemy.prototype.update = function(dt) {
 
-    // Resets enemy location if it has gone offscreen 
+    // Resets enemy location if it has gone offscreen
     if (this.x > 5) {
         this.x = this.getRandomStart();
         this.speed = this.getRandomSpeed();
@@ -80,10 +80,10 @@ KillerBug.prototype.getRandomStart = function() {
 
 /**
  * Creates families of killer bugs
- * @param {Number of killer bugs to create} num 
+ * @param {Number of killer bugs to create} num
  */
 KillerBug.prototype.makeBugs = function(num = 3) {
-    const bugs = Array.from(Array(num).keys()).map(function(n, i) {
+    const bugs = Array.from(Array(num).keys()).map(function(_, i) {
         return new KillerBug(this.getRandomStart(), i + 1, this.getRandomTransparency());
     }, this);
 
