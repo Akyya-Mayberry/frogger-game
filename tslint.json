@@ -5,7 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
-        "only-arrow-functions": true,
+        "only-arrow-functions": false,
         "quotemark": [
             true,
             "single"
@@ -13,9 +13,9 @@
         "promise-function-async": true,
         "no-console": false,
         "prefer-for-of": true,
-        "no-unused-variable": false,
+        "no-unused-variable": true,
         "prefer-const": [
-            false,
+            true,
             {
                 "destructuring": "all"
             }
@@ -27,8 +27,7 @@
         ],
         "object-literal-sort-keys": false,
         "one-variable-per-declaration": false,
-        "no-debugger": false,
-        "no-var-keyword": false,
+        "no-debugger": false
     },
     "rulesDirectory": []
 }

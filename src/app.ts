@@ -1,6 +1,6 @@
-import KillerBug from "./enemy";
-import Player from "./player";
-import EntityBase from "./entity";
+import KillerBug from './enemy';
+import Player from './player';
+import EntityBase from './entity';
 
 const time = document.querySelector('#countdown');
 const navMenu = document.querySelector('#nav-menu');
@@ -26,7 +26,7 @@ function init() {
 
 }
 
-init()
+init();
 
 /**
  * Handles all set up for setting game in motion
@@ -51,8 +51,8 @@ function timer(count = 10) {
     countdown = count;
     time!.innerHTML = `${countdown}`;
 
-    const t = setInterval(function () {
-        if (countdown == 0) {
+    const t = setInterval(function() {
+        if (countdown === 0) {
             startGame();
             clearInterval(t);
         } else {
@@ -74,9 +74,9 @@ function setUpLives(src = defaultPlayer!.src) {
 
 /**
  * Updates selected avatar
- * @param {Event target} e 
+ * @param {Event target} e
  */
-const updateAvatar = function (e) {
+const updateAvatar = function(e) {
     if (e.target.nodeName === 'IMG') {
         const src = e.target.src.split('/');
         const filename = src[src.length - 1];
@@ -154,12 +154,12 @@ function displayWonGame(show = true) {
 avatars.addEventListener('click', updateAvatar);
 
 // Overrids the countdown to automatically start game
-goButton.addEventListener('click', function () { countdown = 0; });
+goButton.addEventListener('click', function() { countdown = 0; });
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function (e) {
-    var allowedKeys = {
+document.addEventListener('keyup', function(e) {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -172,7 +172,7 @@ document.addEventListener('keyup', function (e) {
 /**
  * Listens for clicking of restart button
  */
-document.addEventListener('click', function (e) {
+document.addEventListener('click', function(e) {
     if (e.target.nodeName === 'BUTTON' &&
         e.target.classList.contains('play-again')) {
         allEnemies = KillerBug.prototype.makeBugs();
