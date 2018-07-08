@@ -1,22 +1,22 @@
-import EntityBase from "./entity";
+import EntityBase from './entity';
 
 /* Resources.js
  * This is simply an image loading utility. It eases the process of loading
  * image files so that they can be used within your game. It also includes
- * a simple "caching" layer so it will reuse cached images if you attempt
+ * a simple 'caching' layer so it will reuse cached images if you attempt
  * to load the same image multiple times.
  */
-var Resources = (function() {
-    var resourceCache = {};
+const Resources = (function() {
+    const resourceCache = {};
     // var loading = [];
-    var readyCallbacks: any[] = [];
+    const readyCallbacks: any[] = [];
 
     /* This is the publicly accessible image loading function. It accepts
      * an array of strings pointing to image files or a string for a single
      * image. It will then call our private image loading function accordingly.
      */
     function load(urlOrArr: any) {
-        if(urlOrArr instanceof Array) {
+        if (urlOrArr instanceof Array) {
             /* If the developer passed in an array of images
              * loop through each value and call our image
              * loader on that image file
@@ -37,7 +37,7 @@ var Resources = (function() {
      * called by the public image loader function.
      */
     function _load(url: string) {
-        if(resourceCache[url]) {
+        if (resourceCache[url]) {
             /* If this URL has been previously loaded it will exist within
              * our resourceCache array. Just return that image rather
              * re-loading the image.
@@ -47,7 +47,7 @@ var Resources = (function() {
             /* This URL has not been previously loaded and is not present
              * within our cache; we'll need to load this image.
              */
-            var img = new Image();
+            const img = new Image();
             img.onload = function() {
                 /* Once our image has properly loaded, add it to our cache
                  * so that we can simply return this image if the developer
@@ -58,7 +58,7 @@ var Resources = (function() {
                 /* Once the image is actually loaded and properly cached,
                  * call all of the onReady() callbacks we have defined.
                  */
-                if(isReady()) {
+                if (isReady()) {
                     readyCallbacks.forEach(function(func) { func(); });
                 }
             };
@@ -84,9 +84,9 @@ var Resources = (function() {
      * for loading have in fact been properly loaded.
      */
     function isReady() {
-        var ready = true;
-        for(var k in resourceCache) {
-            if(resourceCache.hasOwnProperty(k) &&
+        let ready = true;
+        for (const k in resourceCache) {
+            if (resourceCache.hasOwnProperty(k) &&
                !resourceCache[k]) {
                 ready = false;
             }
@@ -104,12 +104,7 @@ var Resources = (function() {
     /* This object defines the publicly accessible functions available to
      * developers by creating a global Resources object.
      */
-    return {
-        load: load,
-        get: get,
-        onReady: onReady,
-        isReady: isReady
-    };
+    return { load, get, onReady, isReady };
 })();
 
 export = Resources;

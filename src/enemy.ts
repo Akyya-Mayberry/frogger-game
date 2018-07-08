@@ -76,7 +76,7 @@ KillerBug.prototype.constructor = KillerBug;
  */
 KillerBug.prototype.getRandomStart = function() {
     return -(EntityBase.prototype.getRandomStart.apply(this, [0, 4]));
-}
+};
 
 /**
  * Creates families of killer bugs
