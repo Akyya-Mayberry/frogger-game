@@ -1,3 +1,7 @@
+import KillerBug from "./enemy";
+import Player from "./player";
+import EntityBase from "./entity";
+
 const time = document.querySelector('#countdown');
 const navMenu = document.querySelector('#nav-menu');
 const gameOver = document.querySelector('#game-over');
@@ -27,8 +31,10 @@ init()
  * Handles all set up for setting game in motion
  */
 function startGame() {
-    document.querySelector('.canvas').width = 505;
-    document.querySelector('.canvas').height = 606;
+    if (canvas != null) {
+        canvas.width = 505;
+        canvas.height = 606;
+    }
 
     displayStats();
     displayMenu(false);
@@ -172,3 +178,5 @@ document.addEventListener('click', function (e) {
         setupPlayer();
     }
 });
+
+export {player, allEnemies, displayGameOver, displayWonGame};

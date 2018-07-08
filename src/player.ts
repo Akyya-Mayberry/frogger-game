@@ -1,3 +1,5 @@
+import EntityBase from "./entity";
+
 /**
  * Base player class that all players will inherit from
  * @param {start horizontal position} x 
@@ -20,7 +22,7 @@ Player.prototype.constructor = Player;
  * Activates player (allows user to move player)
  */
 Player.prototype.activate = function() {
-    player.activated = true;
+    this.activated = true;
 }
 
 /**
@@ -72,7 +74,7 @@ Player.prototype.loseALife = function() {
 Player.prototype.hit = function() {
     
     this.loseALife();
-    player.hurt = 10;
+    this.hurt = 10;
     this.camouflage = .35;
     
     if (this.y < 2) {
@@ -101,7 +103,7 @@ Player.prototype.setLocation = function(x, y) {
  * @param {direction player attempts to move in} input 
  */
 Player.prototype.handleInput = function(input) {
-    if (!player.activated) { return; }
+    if (!this.activated) { return; }
 
     switch (input) {
         case 'left':
@@ -127,3 +129,5 @@ Player.prototype.handleInput = function(input) {
         or somewhere easier to maintain.
     */
 }
+
+export = Player;

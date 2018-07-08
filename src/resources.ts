@@ -1,10 +1,12 @@
+import EntityBase from "./entity";
+
 /* Resources.js
  * This is simply an image loading utility. It eases the process of loading
  * image files so that they can be used within your game. It also includes
  * a simple "caching" layer so it will reuse cached images if you attempt
  * to load the same image multiple times.
  */
-(function() {
+var Resources = (function() {
     var resourceCache = {};
     // var loading = [];
     var readyCallbacks: any[] = [];
@@ -58,7 +60,6 @@
                  */
                 if(isReady()) {
                     readyCallbacks.forEach(function(func) { func(); });
-                    console.log('cache!!!!: ', typeof resourceCache[url]);
                 }
             };
 
@@ -103,10 +104,12 @@
     /* This object defines the publicly accessible functions available to
      * developers by creating a global Resources object.
      */
-    (<any>window).Resources = {
+    return {
         load: load,
         get: get,
         onReady: onReady,
         isReady: isReady
     };
 })();
+
+export = Resources;

@@ -1,3 +1,5 @@
+import EntityBase from "./entity";
+
 /**
  * Base enemy class that all enemies will inherit from
  * @param {start horizontal position} x 
@@ -88,3 +90,5 @@ KillerBug.prototype.makeBugs = function(num = 3) {
 
     return bugs;
 }
+
+export = KillerBug;

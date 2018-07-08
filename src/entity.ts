@@ -1,3 +1,6 @@
+import ctx from "./engine";
+import Resources from "./resources";
+
 /**
  * Base class that all players and enemies will inherit from
  * @param {start horizontal position} x 
@@ -88,3 +91,5 @@ EntityBase.prototype.getRandomStart = function(min = 0, max = 5) {
 EntityBase.prototype.getRandomTransparency = function() {
     return Math.random();
 }
+
+export = EntityBase;

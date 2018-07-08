@@ -1,3 +1,9 @@
+import KillerBug from "./enemy";
+import Resources from "./resources";
+import EntityBase from "./entity";
+
+import {player, allEnemies, displayGameOver, displayWonGame} from "./app";
+
 /* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
@@ -18,8 +24,9 @@ var Engine = (function (global) {
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
-    var doc = global.document,
-        win = global.window,
+;
+    var doc = document,
+        win = window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         target = 0.5,
@@ -29,11 +36,8 @@ var Engine = (function (global) {
     canvas.height = 150;
     canvas.classList.add('canvas');
 
-    var canvas1 = doc.createElement('canvas')
-    var ctx2 = canvas1.getContext("2d");
-    ctx2.font = "30px Arial";
-    ctx2.fillText("Hello World", 10, 50);
-
+    canvas.width = 505;
+    canvas.height = 606;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -210,7 +214,8 @@ var Engine = (function (global) {
      */
     function reset() {
         for (const e of allEnemies) {
-            e.x = KillerBug.prototype.getRandomStart();
+            // e.x = KillerBug.prototype.getRandomStart();
+            // e.x = KillerBug.getRandomStart();
         }
 
         player.setLocation(2, 5);
@@ -244,4 +249,9 @@ var Engine = (function (global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+    
+    return ctx;
+    // global.canvas = canvas;
 })(this);
+
+export = Engine;
