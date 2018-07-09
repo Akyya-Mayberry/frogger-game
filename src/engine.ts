@@ -1,3 +1,8 @@
+import EntityBase from './entity';
+import Resources from './resources';
+
+import {allEnemies, displayGameOver, displayWonGame, player} from './app';
+
 /* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
@@ -6,33 +11,30 @@
  * A game engine works by drawing the entire game screen over and over, kind of
  * like a flipbook you may have created as a kid. When your player moves across
  * the screen, it may look like just that image/character is moving or being
- * drawn but that is not the case. What's really happening is the entire "scene"
+ * drawn but that is not the case. What's really happening is the entire 'scene'
  * is being drawn over and over, presenting the illusion of animation.
  *
  * This engine makes the canvas' context (ctx) object globally available to make 
  * writing app.js a little simpler to work with.
  */
 
-var Engine = (function (global) {
+const Engine = (function() {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
-    var doc = global.document,
-        win = global.window,
+
+    const doc = document,
+        win = window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        target = 0.5,
-        lastTime;
+        target = 0.5;
+
+    let lastTime = 0;
 
     canvas.width = 505;
     canvas.height = 150;
     canvas.classList.add('canvas');
-
-    var canvas1 = doc.createElement('canvas')
-    var ctx2 = canvas1.getContext("2d");
-    ctx2.font = "30px Arial";
-    ctx2.fillText("Hello World", 10, 50);
 
     doc.body.appendChild(canvas);
 
@@ -46,7 +48,7 @@ var Engine = (function (global) {
          * would be the same for everyone (regardless of how fast their
          * computer is) - hurray time!
          */
-        var now = Date.now(),
+        const now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
         /* Call our update/render functions, pass along the time delta to
@@ -87,7 +89,7 @@ var Engine = (function (global) {
      */
     function update(dt) {
         updateEntities(dt);
-        let collision = checkCollisions();
+        const collision = checkCollisions();
         !collision ? checkIsWinner() : playerHit();
     }
 
@@ -99,14 +101,14 @@ var Engine = (function (global) {
      * render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function (enemy) {
+        allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
 
-        playerState = player.update();
+        player.update();
     }
 
-    /* This function initially draws the "game level", it will then call
+    /* This function initially draws the 'game level', it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -
      * they are flipbooks creating the illusion of animation but in reality
@@ -116,24 +118,25 @@ var Engine = (function (global) {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
-        var rowImages = [
-            'public/images/water-block.png',   // Top row is water
-            'public/images/stone-block.png',   // Row 1 of 3 of stone
-            'public/images/stone-block.png',   // Row 2 of 3 of stone
-            'public/images/stone-block.png',   // Row 3 of 3 of stone
-            'public/images/grass-block.png',   // Row 1 of 2 of grass
-            'public/images/grass-block.png'    // Row 2 of 2 of grass
+        const rowImages = [
+            '../src/public/images/water-block.png',   // Top row is water
+            '../src/public/images/stone-block.png',   // Row 1 of 3 of stone
+            '../src/public/images/stone-block.png',   // Row 2 of 3 of stone
+            '../src/public/images/stone-block.png',   // Row 3 of 3 of stone
+            '../src/public/images/grass-block.png',   // Row 1 of 2 of grass
+            '../src/public/images/grass-block.png'    // Row 2 of 2 of grass
         ],
             numRows = 6,
-            numCols = 5,
-            row, col;
+            numCols = 5;
+
+        let row = 0, col = 0;
 
         // Before drawing, clear existing canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         /* Loop through the number of rows and columns we've defined above
          * and, using the rowImages array, draw the correct image for that
-         * portion of the "grid"
+         * portion of the 'grid'
          */
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
@@ -160,7 +163,7 @@ var Engine = (function (global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        allEnemies.forEach(function (enemy) {
+        allEnemies.forEach(function(enemy) {
             enemy.render();
         });
 
@@ -209,8 +212,9 @@ var Engine = (function (global) {
      * Player is set back to starting point and enemies taken back offscreen
      */
     function reset() {
-        for (const e of allEnemies) {
-            e.x = KillerBug.prototype.getRandomStart();
+        for (const _ of allEnemies) {
+            // console.log('Entity: ', EntityBase);
+            // e.x = EntityBase.getRandomStart();
         }
 
         player.setLocation(2, 5);
@@ -229,13 +233,13 @@ var Engine = (function (global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'public/images/stone-block.png',
-        'public/images/water-block.png',
-        'public/images/grass-block.png',
-        'public/images/enemy-bug.png',
-        'public/images/char-boy.png',
-        'public/images/char-princess-girl.png',
-        'public/images/char-cat-girl.png'
+        '../src/public/images/stone-block.png',
+        '../src/public/images/water-block.png',
+        '../src/public/images/grass-block.png',
+        '../src/public/images/enemy-bug.png',
+        '../src/public/images/char-boy.png',
+        '../src/public/images/char-princess-girl.png',
+        '../src/public/images/char-cat-girl.png'
     ]);
     Resources.onReady(init);
 
@@ -243,5 +247,8 @@ var Engine = (function (global) {
      * object when run in a browser) so that developers can use it more easily
      * from within their app.js files.
      */
-    global.ctx = ctx;
-})(this);
+    // global.ctx = ctx;
+    return ctx;
+})();
+
+export = Engine;

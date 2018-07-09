@@ -1,16 +1,18 @@
-const time = document.querySelector('#countdown');
-const navMenu = document.querySelector('#nav-menu');
-const gameOver = document.querySelector('#game-over');
-const wonGame = document.querySelector('#won-game');
-const avatars = document.querySelector('#avatars');
-const defaultPlayer = document.querySelector('#default-avatar');
-const stats = document.querySelector('#stats');
-const lives = document.querySelectorAll('.stats-life');
-const canvas = document.querySelector('.canvas');
-const goButton = document.querySelector('#start-btn');
-let allEnemies;
-let player;
-let countdown;
+import KillerBug from './enemy';
+import Player from './player';
+
+const time = document.querySelector('#countdown'),
+    navMenu: HTMLElement = document.querySelector('#nav-menu'),
+    gameOver: HTMLDivElement = document.querySelector('#game-over'),
+    wonGame: HTMLDivElement = document.querySelector('#won-game'),
+    avatars = document.querySelector('#avatars'),
+    defaultPlayer = document.querySelector('#default-avatar') as HTMLImageElement,
+    stats: HTMLElement = document.querySelector('#stats'),
+    lives = document.querySelectorAll('.stats-life'),
+    canvas = document.querySelector('.canvas') as HTMLCanvasElement,
+    goButton = document.querySelector('#start-btn');
+
+let allEnemies, player, countdown: number;
 
 function init() {
     player = new Player();
@@ -18,17 +20,20 @@ function init() {
     displayStats(false);
     displayMenu();
     displayGameOver(false);
-    timer(11);
+    timer(15);
+
 }
 
-init()
+init();
 
 /**
  * Handles all set up for setting game in motion
  */
 function startGame() {
-    document.querySelector('.canvas').width = 505;
-    document.querySelector('.canvas').height = 606;
+    if (canvas != null) {
+        canvas.width = 505;
+        canvas.height = 606;
+    }
 
     displayStats();
     displayMenu(false);
@@ -42,14 +47,14 @@ function startGame() {
  */
 function timer(count = 10) {
     countdown = count;
-    time.innerHTML = countdown;
+    time!.innerHTML = `${countdown}`;
 
-    const t = setInterval(function () {
-        if (countdown == 0) {
+    const t = setInterval(function() {
+        if (countdown === 0) {
             startGame();
             clearInterval(t);
         } else {
-            time.innerHTML = countdown;
+            time!.innerHTML = `${countdown}`;
             countdown--;
         }
     }, 1000);
@@ -57,22 +62,22 @@ function timer(count = 10) {
 
 /**
  * Sets the display image for player lives in stats section
- * @param {full path to image} src 
+ * @param {full path to image} src
  */
-function setUpLives(src = defaultPlayer.src) {
-    for (const life of lives) {
+function setUpLives(src = defaultPlayer!.src) {
+    for (const life of Array.from(lives)) {
         life.src = src;
     }
 }
 
 /**
  * Updates selected avatar
- * @param {Event target} e 
+ * @param {Event target} e
  */
-const updateAvatar = function (e) {
+const updateAvatar = function(e) {
     if (e.target.nodeName === 'IMG') {
         const src = e.target.src.split('/');
-        filename = src[src.length - 1];
+        const filename = src[src.length - 1];
 
         player.changeSprite(filename);
 
@@ -81,7 +86,7 @@ const updateAvatar = function (e) {
 
         setUpLives(e.target.src);
     }
-}
+};
 
 /**
  * Resets game to player profile selection
@@ -107,8 +112,8 @@ function setupPlayer() {
  */
 function displayStats(show = true) {
     if (show) {
-        const name = document.querySelector('#player-name');
-        if (name.value != '') { player.name = name.value; }
+        const name: HTMLInputElement = document.querySelector('#player-name');
+        if (name.value !== '') { player.name = name.value; }
         stats.style.opacity = '1';
         document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
     } else {
@@ -147,12 +152,12 @@ function displayWonGame(show = true) {
 avatars.addEventListener('click', updateAvatar);
 
 // Overrids the countdown to automatically start game
-goButton.addEventListener('click', function () { countdown = 0; });
+goButton.addEventListener('click', function() { countdown = 0; });
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function (e) {
-    var allowedKeys = {
+document.addEventListener('keyup', function(e) {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -165,10 +170,14 @@ document.addEventListener('keyup', function (e) {
 /**
  * Listens for clicking of restart button
  */
-document.addEventListener('click', function (e) {
-    if (e.target.nodeName === 'BUTTON' &&
-        e.target.classList.contains('play-again')) {
+document.addEventListener('click', function(e: MouseEvent) {
+    const target = e.target as Element;
+
+    if (target.nodeName === 'BUTTON' &&
+        target.classList.contains('play-again')) {
         allEnemies = KillerBug.prototype.makeBugs();
         setupPlayer();
     }
 });
+
+export { player, allEnemies, displayGameOver, displayWonGame };

@@ -1,30 +1,36 @@
+import ctx from './engine';
+import Resources from './resources';
+
 /**
  * Base class that all players and enemies will inherit from
- * @param {start horizontal position} x 
- * @param {start verticle position} y 
- * @param {name of entity} name 
- * @param {image to use for entity} sprite 
+ * @param {start horizontal position} x
+ * @param {start verticle position} y
+ * @param {name of entity} name
+ * @param {image to use for entity} sprite
  */
-const EntityBase = function(x = 0, y = 0, name, sprite) {
+const EntityBase = (function() {
+
+function EntityBase(x = 0, y = 0, name, sprite) {
     this.x = x;
     this.y = y;
     this.name = name;
-    this.sprite = `public/images/${sprite}`;
-};
+    this.sprite = `../src/public/images/${sprite}`;
+    this.getRandomStart = this.getRandomStart;
+}
 
 /**
  * Provides x,y coordinates/location of entity
  */
 EntityBase.prototype.getLocation = function() {
-    return (this.x, this.y);
-}
+    return [this.x, this.y];
+};
 
 /**
  * Updates the sprite
  */
 EntityBase.prototype.changeSprite = function(sprite) {
-    this.sprite = `public/images/${sprite}`;
-}
+    this.sprite = `../src/public/images/${sprite}`;
+};
 
 /**
  * Provides basic movement of entity along x/y axis
@@ -49,11 +55,11 @@ EntityBase.prototype.move = function(direction) {
     }
 
     /*
-    TODO: 
+    TODO:
         This function should be updated to take able to take a
         a series of movement [left, up, down] etc
     */
-}
+};
 
 /**
  * Draw the EntityBase on the screen, required method for game
@@ -70,21 +76,27 @@ EntityBase.prototype.render = function() {
  * @param {the upper range of random number - exclusive} max
  */
 EntityBase.prototype.getRandomSpeed = function(max = 5) {
-    return Math.floor((Math.random() * max) + 1)
-}
-
-/**
- * Provides a random start point using random generated number
- * @param {start range for random number - inclusive} min
- * @param {end range for random number - exclusive} max
- */
-EntityBase.prototype.getRandomStart = function(min = 0, max = 5) {
-    return Math.floor((Math.random() * max) + min);
-}
+    return Math.floor((Math.random() * max) + 1);
+};
 
 /**
  * Provides random transparency number from 0 - 1
  */
 EntityBase.prototype.getRandomTransparency = function() {
     return Math.random();
-}
+};
+
+/**
+ * Provides a random start point using random generated number
+ * @param {start range for random number - inclusive} min
+ * @param {end range for random number - exclusive} max
+ */
+EntityBase.getRandomStart = function(min = 0, max = 5) {
+    return Math.floor((Math.random() * max) + min);
+};
+
+return EntityBase;
+
+})();
+
+export = EntityBase;

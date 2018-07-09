@@ -4,25 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/overlays.css">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/public/css/style.css">
+    <link rel="stylesheet" href="../src/public/css/overlays.css">
 </head>
 
 <body>
 
     <!-- Stats Section -->
+    
     <section class="stats" id="stats">
         <h1 id="stats-header">Player 1</h1>
         <p class="stats-lives">
-            <img class="stats-life" src="public/images/char-boy.png" alt="boy character">
-            <img class="stats-life" src="public/images/char-boy.png" alt="boy character">
-            <img class="stats-life" src="public/images/char-boy.png" alt="boy character">
+            <img class="stats-life" src="../src/public/images/char-boy.png" alt="boy character">
+            <img class="stats-life" src="../src/public/images/char-boy.png" alt="boy character">
+            <img class="stats-life" src="../src/public/images/char-boy.png" alt="boy character">
         </p>
     </section>
 
     <!-- Overlay Main Menu -->
+    
     <div id="nav-menu" class="overlay">
         <div class="overlay-content">
 
@@ -40,9 +42,9 @@
             <section class="avatar-selection">
                 <h3>Select Player</h3>
                 <div class="avatars" id="avatars">
-                    <img src="public/images/char-cat-girl.png" alt="cat girl character">
-                    <img id="default-avatar" class="selected" src="public/images/char-boy.png" alt="boy character">
-                    <img src="public/images/char-princess-girl.png" alt="princess character">
+                    <img src="../src/public/images/char-cat-girl.png" alt="cat girl character">
+                    <img id="default-avatar" class="selected" src="../src/public/images/char-boy.png" alt="boy character">
+                    <img src="../src/public/images/char-princess-girl.png" alt="princess character">
                 </div>
             </section>
 
@@ -50,6 +52,7 @@
     </div>
 
     <!-- Game Over Overlay -->
+    
     <div id="game-over" class="overlay game-over">
         <div class="overlay-content">
             <h2>Womp womp...Game over!</h2>
@@ -58,6 +61,7 @@
     </div>
 
     <!-- Won Game Overlay -->
+    
     <div id="won-game" class="overlay won-game">
         <div class="overlay-content">
             <h2>You won! Nice moves!</h2>
@@ -66,16 +70,8 @@
     </div>
 
     <!-- Scripts -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/resources.js"></script>
-    <script src="js/entity.js"></script>
-    <script src="js/enemy.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
-
 </body>
 
 </html>
