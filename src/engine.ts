@@ -1,4 +1,3 @@
-import KillerBug from './enemy';
 import EntityBase from './entity';
 import Resources from './resources';
 
@@ -19,7 +18,7 @@ import {allEnemies, displayGameOver, displayWonGame, player} from './app';
  * writing app.js a little simpler to work with.
  */
 
-const Engine = (function(global) {
+const Engine = (function() {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
@@ -214,7 +213,8 @@ const Engine = (function(global) {
      */
     function reset() {
         for (const _ of allEnemies) {
-            // e.x = KillerBug.getRandomStart();
+            // console.log('Entity: ', EntityBase);
+            // e.x = EntityBase.getRandomStart();
         }
 
         player.setLocation(2, 5);
@@ -249,6 +249,6 @@ const Engine = (function(global) {
      */
     // global.ctx = ctx;
     return ctx;
-})(this);
+})();
 
 export = Engine;

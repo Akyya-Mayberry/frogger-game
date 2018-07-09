@@ -25,7 +25,7 @@
             true,
             "always"
         ],
-        "object-literal-sort-keys": false,
+        "object-literal-sort-keys": true,
         "one-variable-per-declaration": false,
         "no-debugger": false
     },

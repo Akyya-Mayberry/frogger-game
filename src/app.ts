@@ -1,20 +1,18 @@
 import KillerBug from './enemy';
 import Player from './player';
-import EntityBase from './entity';
 
-const time = document.querySelector('#countdown');
-const navMenu = document.querySelector('#nav-menu');
-const gameOver = document.querySelector('#game-over');
-const wonGame = document.querySelector('#won-game');
-const avatars = document.querySelector('#avatars');
-const defaultPlayer = document.querySelector('#default-avatar');
-const stats = document.querySelector('#stats');
-const lives = document.querySelectorAll('.stats-life');
-const canvas = document.querySelector('.canvas');
-const goButton = document.querySelector('#start-btn');
-let allEnemies;
-let player;
-let countdown: number;
+const time = document.querySelector('#countdown'),
+    navMenu: HTMLElement = document.querySelector('#nav-menu'),
+    gameOver: HTMLDivElement = document.querySelector('#game-over'),
+    wonGame: HTMLDivElement = document.querySelector('#won-game'),
+    avatars = document.querySelector('#avatars'),
+    defaultPlayer = document.querySelector('#default-avatar') as HTMLImageElement,
+    stats: HTMLElement = document.querySelector('#stats'),
+    lives = document.querySelectorAll('.stats-life'),
+    canvas = document.querySelector('.canvas') as HTMLCanvasElement,
+    goButton = document.querySelector('#start-btn');
+
+let allEnemies, player, countdown: number;
 
 function init() {
     player = new Player();
@@ -22,7 +20,7 @@ function init() {
     displayStats(false);
     displayMenu();
     displayGameOver(false);
-    timer(11);
+    timer(15);
 
 }
 
@@ -64,10 +62,10 @@ function timer(count = 10) {
 
 /**
  * Sets the display image for player lives in stats section
- * @param {full path to image} src 
+ * @param {full path to image} src
  */
 function setUpLives(src = defaultPlayer!.src) {
-    for (const life of lives) {
+    for (const life of Array.from(lives)) {
         life.src = src;
     }
 }
@@ -88,7 +86,7 @@ const updateAvatar = function(e) {
 
         setUpLives(e.target.src);
     }
-}
+};
 
 /**
  * Resets game to player profile selection
@@ -114,8 +112,8 @@ function setupPlayer() {
  */
 function displayStats(show = true) {
     if (show) {
-        const name = document.querySelector('#player-name');
-        if (name.value != '') { player.name = name.value; }
+        const name: HTMLInputElement = document.querySelector('#player-name');
+        if (name.value !== '') { player.name = name.value; }
         stats.style.opacity = '1';
         document.querySelector('#stats-header').innerHTML = `Go ${player.name}!`;
     } else {
@@ -172,12 +170,14 @@ document.addEventListener('keyup', function(e) {
 /**
  * Listens for clicking of restart button
  */
-document.addEventListener('click', function(e) {
-    if (e.target.nodeName === 'BUTTON' &&
-        e.target.classList.contains('play-again')) {
+document.addEventListener('click', function(e: MouseEvent) {
+    const target = e.target as Element;
+
+    if (target.nodeName === 'BUTTON' &&
+        target.classList.contains('play-again')) {
         allEnemies = KillerBug.prototype.makeBugs();
         setupPlayer();
     }
 });
 
-export {player, allEnemies, displayGameOver, displayWonGame};
+export { player, allEnemies, displayGameOver, displayWonGame };

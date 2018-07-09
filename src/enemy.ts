@@ -75,7 +75,7 @@ KillerBug.prototype.constructor = KillerBug;
  * Creates a negative number for starting bug offscreen
  */
 KillerBug.prototype.getRandomStart = function() {
-    return -(EntityBase.prototype.getRandomStart.apply(this, [0, 4]));
+    return -(EntityBase.getRandomStart(0, 4));
 };
 
 /**

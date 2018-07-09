@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
     "module": "commonjs",
     "lib": ["es5", "es6", "dom"],                             /* Specify library files to be included in the compilation. */
     "allowJs": true,                       /* Allow javascript files to be compiled. */
@@ -26,7 +26,7 @@
     "strictFunctionTypes": false,           /* Enable strict checking of function types. */
     "strictPropertyInitialization": false,  /* Enable strict checking of property initialization in classes. */
     "noImplicitThis": false,                /* Raise error on 'this' expressions with an implied 'any' type. */
-    "alwaysStrict": false,                  /* Parse in strict mode and emit "use strict" for each source file. */
+    "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
 
     /* Additional Checks */
     "noUnusedLocals": true,                /* Report errors on unused locals. */
