@@ -6,7 +6,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-For development, Node.js is required for installing packages. A text editor such as SublimeText or Visual Studio Code is recommended.
+For development, **npm** is required for installing packages. A text editor such as SublimeText or Visual Studio Code is recommended.
 
 If you simply wish to play the game, it is recommended that you use the most current version of Google Chrome Browser and ensure that JavaScript is able to run.
 
