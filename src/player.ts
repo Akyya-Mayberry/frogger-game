@@ -21,16 +21,12 @@ Player.prototype.constructor = Player;
 /**
  * Activates player (allows user to move player)
  */
-Player.prototype.activate = function() {
-    this.activated = true;
-};
+Player.prototype.activate = function() { this.activated = true; };
 
 /**
  * Returns whether or not player still has life
  */
-Player.prototype.isAlive = function() {
-    return this.lives > 0;
-};
+Player.prototype.isAlive = function() { return this.lives > 0; };
 
 /**
  * Set player as dead
@@ -38,38 +34,37 @@ Player.prototype.isAlive = function() {
 Player.prototype.kill = function() {
     this.lives = 0;
     this.activated = false;
-    this.hurt = 10;
+    this.hurt = 10; // will create transparency effect
     this.camouflage = .50;
 };
 
 /**
- * Decide what to do with this
+ * Animates players collisions and updates players lives in UI
  */
 Player.prototype.update = function() {
 
     // Player collision is animated by altering hurt/camouflage setting.
     this.hurt === 0 ? this.camouflage = 1.0 : this.hurt--;
 
-    document.querySelectorAll('.stats-life').forEach(function(life, index) {
-        life.style.opacity = this.lives >= index + 1 ? 1 : .50;
-    }, this);
+    document.querySelectorAll('.stats-life')
+        .forEach(function(life, index) {
+            life.style.opacity = this.lives >= index + 1 ? 1 : .50;
+        }, this);
 
     return this.isAlive();
     /*
     TODO:
-        Decide what other purposes this serves. 
+        Decide what other purposes this serves.
     */
 };
 
 /**
  * Decrement user life count by 1
  */
-Player.prototype.loseALife = function() {
-    this.lives -= 1;
-};
+Player.prototype.loseALife = function() { this.lives -= 1; };
 
 /**
- * Animates user collision 
+ * Sets up animating of user collision
  */
 Player.prototype.hit = function() {
 
@@ -77,11 +72,8 @@ Player.prototype.hit = function() {
     this.hurt = 10;
     this.camouflage = .35;
 
-    if (this.y < 2) {
-        this.setLocation(2, 5);
-    } else {
+    this.y < 2 ? this.setLocation(2, 5) :
         this.setLocation(this.x - 1, this.y + 2);
-    }
 };
 
 /**
@@ -91,16 +83,15 @@ Player.prototype.hit = function() {
  */
 Player.prototype.setLocation = function(x, y) {
     if (x > 0 && x < 6 && y > 0 && y < 6) {
-        this.x = x; this.y = y;
+        this.x = x, this.y = y;
     } else {
-        this.x = 2;
-        this.y = 5;
+        this.x = 2, this.y = 5;
     }
 };
 
 /**
  * Moves the player along the x/y axis based
- * @param {direction player attempts to move in} input 
+ * @param {direction player attempts to move in} input
  */
 Player.prototype.handleInput = function(input) {
     if (!this.activated) { return; }

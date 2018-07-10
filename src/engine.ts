@@ -170,11 +170,16 @@ const Engine = (function() {
         player.render();
     }
 
+    /**
+     * Checks if any of the bugs has same x position
+     * as the player (collision). The target is used to provide how close
+     * of players x to enemy is allowed.
+     */
     function checkCollisions() {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
                 // e.render();
-                e.attack('Ouch!');
+                // e.attack('Ouch!');
                 return true;
             }
         }
@@ -192,40 +197,33 @@ const Engine = (function() {
     }
 
     /**
-     * Resets game - player loses
+     * Issues attack on player - kills player if necessary
      */
     function playerHit() {
         player.hit();
-        const isAlive = player.isAlive();
-
-        if (!isAlive) { player.kill(); gameOver(); }
+        if (!player.isAlive()) { gameOver(); }
     }
 
     /**
-     * Displays game over overlay
+     * Kills player and displays game over overlay
      */
-    function gameOver() {
-        displayGameOver(true);
-    }
+    function gameOver() { player.kill(); displayGameOver(true); }
 
-    /* Resets most aspects of the game
-     * Player is set back to starting point and enemies taken back offscreen
+    /* Resets most aspects of the game.
+     * Player is set back to starting point and enemies are taken back offscreen
      */
     function reset() {
         for (const _ of allEnemies) {
-            // console.log('Entity: ', EntityBase);
             // e.x = EntityBase.getRandomStart();
+
+            /*
+            TODO: The 'static method' on EntityBase getRandomStart
+            to place bugs at different start positon
+            is currently throwing error. Will need to figure out why.
+            */
         }
 
         player.setLocation(2, 5);
-
-        /*
-        TODO:
-            Reset probably should be methods on the enemy
-            and player classes. Also should reset remove all bugs and 
-            create new bugs or do we just do as above and use the same
-            bugs and reset their x value?
-        */
     }
 
     /* Go ahead and load all of the images we know we're going to need to
