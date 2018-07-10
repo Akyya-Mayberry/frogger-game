@@ -70,5 +70,6 @@ In the meantime preview this video here
 
 ## Acknowledgments
 
-* Game engine provided by Udacity
+* Game animation (Engine.js) is provided by Udacity as well as all images and the resource loader (Resource.js)
+* The UI overlays were based on and inspired by https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp*/
 
