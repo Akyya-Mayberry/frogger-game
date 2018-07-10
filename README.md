@@ -32,10 +32,10 @@ where the tsconfig.json file is located. Then type the following command
 2. Build the code: navigate to the root of the project directory where the tsconfig.json file is located. Then type the following commands
   
   
-```npm build```
+```npm run build```
   
   
-```npm start```
+```npm run start```
 
 
 These commands build the files needed to run the application. It also places both TypeScript and webpack in watch mode, so that changes you make are immediately handled. 
