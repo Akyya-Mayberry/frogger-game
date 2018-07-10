@@ -33,3 +33,9 @@ body {
     flex: 0;
     width: 10%;
 }
+
+@media screen and (max-width: 520px) {
+    .canvas {
+        width: 100%;
+    }
+}

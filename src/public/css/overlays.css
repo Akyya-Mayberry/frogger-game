@@ -96,7 +96,7 @@ img.selected {
 }
 
 
-@media screen and (max-height: 450px) {
+/* @media screen and (max-height: 450px) {
     .overlay a {
         font-size: 20px
     }
@@ -104,5 +104,17 @@ img.selected {
         font-size: 40px;
         top: 15px;
         right: 35px;
+    }
+} */
+
+@media screen and (max-width: 520px) {
+    .start-btn {
+        order: 1;
+        width: 70%;
+    }
+
+    input {
+        font-size: 2em;
+        order: 39;
     }
 }
