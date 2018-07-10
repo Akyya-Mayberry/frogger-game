@@ -13,6 +13,7 @@ If you simply wish to play the game, it is recommended that you use the most cur
 ### Installing
 
 1. Clone the repository: navigate to your systems terminal and type the command
+  
 ``` git clone https://github.com/hollywoodno/frogger-game.git ```
 
 For developers looking to work on the project follow the below steps. For users looking to play the game, read the section on *'How to play the game'*.
