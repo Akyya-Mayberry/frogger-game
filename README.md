@@ -2,24 +2,52 @@
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 
-There are generally no prereqs to get the game up and running in development. For development, a text editor such as SublimeText or Visual Studio Code is recommended.
+For development, Node.js is required for installing packages. A text editor such as SublimeText or Visual Studio Code is recommended.
 
 If you simply wish to play the game, it is recommended that you use the most current version of Google Chrome Browser and ensure that JavaScript is able to run.
 
 ### Installing
 
-1. Clone the repository
+1. Clone the repository: navigate to your systems terminal and type the command
 ``` git clone https://github.com/hollywoodno/frogger-game.git ```
 
 For developers looking to work on the project follow the below steps. For users looking to play the game, read the section on *'How to play the game'*.
 
 #### Setting up development
 
-1. This game is primarily written in ES5 for purposes of practicing ES5 prototypical inheritance. It will eventually be moved fully to ES6 using the new class syntax. The major files for development are located under the *src* directory. They include the *Engine, Entity, Enemy, and Player files*.
+This game is primarily written in ES5 for purposes of practicing ES5 prototypical inheritance. It will eventually be moved fully to ES6 using the new class syntax, for these reasons the project uses TypeScript for local development. You are encourage to do the same. 
+
+1. Install the necessary packages: navigate to the root directory of the project
+where the tsconfig.json file is located. Then type the following command
+  
+  
+```npm install```
+  
+  
+2. Build the code: navigate to the root of the project directory where the tsconfig.json file is located. Then type the following commands
+  
+  
+```npm build```
+  
+  
+```npm start```
+
+
+These commands build the files needed to run the application. It also places both TypeScript and webpack in watch mode, so that changes you make are immediately handled. 
+
+3. At this point, you can view the application in one of two ways. 
+
+    - Simply navigate to the build files. The build files are located at the root of the directory under /dist. Double click on the *index.html* file. If a web browser is set as the default application to handle .html files, then you should see the app open in your default browser. If not, you may try right clicking on the file and choose to open it in a browser of your choice. 
+
+    - If you are running a server, launch the server and navigate to the server url and under root/dist directory. This should open the application.
+
+5. For instuctions on how to play the game, head to the section *'How to play the game'*. 
+
+#### The major files for development are located under the *src* directory. They include the *Engine, Entity, Enemy, and Player files*.
 
 *Engine*: Responsible for creating the animated effect
 
@@ -32,11 +60,12 @@ For developers looking to work on the project follow the below steps. For users 
 *Player*: The player class. Currently a basic player is supported. New player features should be added here.
 
 #### How to play the game
-1. To get the game running in your browser, navigate to the root of the cloned directory. There you should find the index.html file.
+*More details to come...*
+  
+In the meantime preview this video here
+   
+[Basic Frogger Game](https://www.youtube.com/watch?v=kaifTslArtY)
 
-2. Double click the index.html file to load the game in your browser. The gameboard should appear.
-
-3. If the gameboard doesn't appear, make sure that JavaScript is able to run in your browser. 
 
 ## Acknowledgments
 

@@ -25,7 +25,7 @@ Enemy.prototype.resetLocation = function() {
 };
 
 /**
- * Displays name of enemy that attack
+ * Reveals enemy that attacked
  */
 Enemy.prototype.attack = function() {
     this.camouflage = 1.0;
@@ -34,7 +34,7 @@ Enemy.prototype.attack = function() {
 };
 
 /**
- * Update the enemy's position, required method for game
+ * Update the enemy's position.
  * @param {a time delta between ticks} dt
  */
 Enemy.prototype.update = function(dt) {
@@ -52,8 +52,7 @@ Enemy.prototype.update = function(dt) {
     /*
     TODO:
         The enemy offscreen point (5) should not be hardcoded here.
-        Need to be set somewhere else. Also consider moving that code
-        block to seperate method.
+        This is very tightly coupled. Need to be set somewhere else. 
     */
 };
 
@@ -76,6 +75,11 @@ KillerBug.prototype.constructor = KillerBug;
  */
 KillerBug.prototype.getRandomStart = function() {
     return -(EntityBase.getRandomStart(0, 4));
+
+    /*
+    TODO: The static getRandomStart func on Entity base
+    is currently not working.
+    */
 };
 
 /**

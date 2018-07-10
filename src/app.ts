@@ -14,14 +14,23 @@ const time = document.querySelector('#countdown'),
 
 let allEnemies, player, countdown: number;
 
+/**
+ * Initializes game, by creating a player and set of bug enemies
+ * for the engine, and preparring the UI by displaying the
+ * main menu (profile setup)
+ */
 function init() {
+    // Init entities
     player = new Player();
     allEnemies = KillerBug.prototype.makeBugs();
+
+    // Update UI to just display player profile setup
     displayStats(false);
     displayMenu();
     displayGameOver(false);
-    timer(15);
 
+    // Give user time to update profile - optional
+    timer(15);
 }
 
 init();
@@ -30,6 +39,10 @@ init();
  * Handles all set up for setting game in motion
  */
 function startGame() {
+    /* Extra check to ensure full canvas is displayed,
+    this will become more significant when level ups
+    are added to game
+    */
     if (canvas != null) {
         canvas.width = 505;
         canvas.height = 606;
@@ -58,6 +71,10 @@ function timer(count = 10) {
             countdown--;
         }
     }, 1000);
+
+    /*
+    TODO: Timing becomes choppy when clicking. Need fix.
+    */
 }
 
 /**
@@ -65,17 +82,17 @@ function timer(count = 10) {
  * @param {full path to image} src
  */
 function setUpLives(src = defaultPlayer!.src) {
-    for (const life of Array.from(lives)) {
-        life.src = src;
-    }
+    for (const life of Array.from(lives)) { life.src = src; }
 }
 
 /**
- * Updates selected avatar
+ * Updates selected avatar in profile setup
  * @param {Event target} e
  */
 const updateAvatar = function(e) {
     if (e.target.nodeName === 'IMG') {
+
+        // Extract just the filename from src
         const src = e.target.src.split('/');
         const filename = src[src.length - 1];
 
@@ -100,6 +117,7 @@ function setupPlayer() {
     displayGameOver(false);
     displayWonGame(false);
 
+    // Set up default avatar
     document.querySelector('.selected').classList.remove('selected');
     defaultPlayer.classList.add('selected');
 
@@ -107,8 +125,8 @@ function setupPlayer() {
 }
 
 /**
- * Displays stats like player name and lives on screen
- * @param {boolean indicating whether to show stats} show 
+ * Displays/hides stats like player name and lives on screen
+ * @param {boolean indicating whether to show stats} show
  */
 function displayStats(show = true) {
     if (show) {
@@ -123,27 +141,21 @@ function displayStats(show = true) {
 
 /**
  * Displays/hides game menu overlay for profile setup
- * @param {boolean indicating whether to show menu} show 
+ * @param {boolean indicating whether to show menu} show
  */
-function displayMenu(show = true) {
-    navMenu.style.width = show ? '100%' : '0';
-}
+function displayMenu(show = true) { navMenu.style.width = show ? '100%' : '0'; }
 
 /**
  * Displays/hides gameover overlay for profile setup
- * @param {boolean indicating whether to show gameover} show 
+ * @param {boolean indicating whether to show gameover} show
  */
-function displayGameOver(show = true) {
-    gameOver.style.width = show ? '100%' : '0';
-}
+function displayGameOver(show = true) { gameOver.style.width = show ? '100%' : '0'; }
 
 /**
  * Displays/hides won game overlay
  * @param {boolean indicating whether to show won game} show 
  */
-function displayWonGame(show = true) {
-    wonGame.style.width = show ? '100%' : '0';
-}
+function displayWonGame(show = true) { wonGame.style.width = show ? '100%' : '0'; }
 
 ////////////////////////////////////////////////////
 // Listeners
@@ -151,11 +163,11 @@ function displayWonGame(show = true) {
 // Listen for changes in avatar
 avatars.addEventListener('click', updateAvatar);
 
-// Overrids the countdown to automatically start game
+// Overrides the countdown to automatically start game
 goButton.addEventListener('click', function() { countdown = 0; });
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Listens for key presses and sends the keys to
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
         37: 'left',
