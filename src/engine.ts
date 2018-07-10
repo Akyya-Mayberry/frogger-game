@@ -179,7 +179,7 @@ const Engine = (function() {
         for (const e of allEnemies) {
             if (Math.abs(e.x - player.x) <= target && Math.abs(e.y - player.y) <= 0.5) {
                 // e.render();
-                // e.attack('Ouch!');
+                e.attack('Ouch!');
                 return true;
             }
         }
