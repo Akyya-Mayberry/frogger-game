@@ -153,7 +153,7 @@ function displayGameOver(show = true) { gameOver.style.width = show ? '100%' : '
 
 /**
  * Displays/hides won game overlay
- * @param {boolean indicating whether to show won game} show 
+ * @param {boolean indicating whether to show won game} show
  */
 function displayWonGame(show = true) { wonGame.style.width = show ? '100%' : '0'; }
 

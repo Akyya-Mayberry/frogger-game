@@ -1,4 +1,3 @@
-import EntityBase from './entity';
 import Resources from './resources';
 
 import {allEnemies, displayGameOver, displayWonGame, player} from './app';
@@ -14,7 +13,7 @@ import {allEnemies, displayGameOver, displayWonGame, player} from './app';
  * drawn but that is not the case. What's really happening is the entire 'scene'
  * is being drawn over and over, presenting the illusion of animation.
  *
- * This engine makes the canvas' context (ctx) object globally available to make 
+ * This engine makes the canvas' context (ctx) object globally available to make
  * writing app.js a little simpler to work with.
  */
 
@@ -213,14 +212,8 @@ const Engine = (function() {
      * Player is set back to starting point and enemies are taken back offscreen
      */
     function reset() {
-        for (const _ of allEnemies) {
-            // e.x = EntityBase.getRandomStart();
-
-            /*
-            TODO: The 'static method' on EntityBase getRandomStart
-            to place bugs at different start positon
-            is currently throwing error. Will need to figure out why.
-            */
+        for (const e of allEnemies) {
+            e.x = e.getRandomStart();
         }
 
         player.setLocation(2, 5);

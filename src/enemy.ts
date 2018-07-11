@@ -9,7 +9,7 @@ import EntityBase from './entity';
  */
 function Enemy(x, y, name, sprite) {
     EntityBase.call(this, x, y, name, sprite);
-    this.speed = this.getRandomSpeed();
+    this.speed = EntityBase.getRandomSpeed();
     this.baseLocation = {x, y};
 }
 
@@ -42,8 +42,8 @@ Enemy.prototype.update = function(dt) {
     // Resets enemy location if it has gone offscreen
     if (this.x > 5) {
         this.x = this.getRandomStart();
-        this.speed = this.getRandomSpeed();
-        this.camouflage = this.getRandomTransparency();
+        this.speed = EntityBase.getRandomSpeed();
+        this.camouflage = EntityBase.getRandomTransparency();
         return;
     }
 
@@ -52,7 +52,7 @@ Enemy.prototype.update = function(dt) {
     /*
     TODO:
         The enemy offscreen point (5) should not be hardcoded here.
-        This is very tightly coupled. Need to be set somewhere else. 
+        This is very tightly coupled. Need to be set somewhere else.
     */
 };
 
@@ -75,11 +75,6 @@ KillerBug.prototype.constructor = KillerBug;
  */
 KillerBug.prototype.getRandomStart = function() {
     return -(EntityBase.getRandomStart(0, 4));
-
-    /*
-    TODO: The static getRandomStart func on Entity base
-    is currently not working.
-    */
 };
 
 /**
@@ -88,7 +83,7 @@ KillerBug.prototype.getRandomStart = function() {
  */
 KillerBug.prototype.makeBugs = function(num = 3) {
     const bugs = Array.from(Array(num).keys()).map(function(_, i) {
-        return new KillerBug(this.getRandomStart(), i + 1, this.getRandomTransparency());
+        return new KillerBug(this.getRandomStart(), i + 1, EntityBase.getRandomTransparency());
     }, this);
 
     return bugs;

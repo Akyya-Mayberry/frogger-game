@@ -71,24 +71,23 @@ const EntityBase = (function() {
         ctx.globalAlpha = 1.0;
     };
 
+    /*
+        The methods below are all class methods on the EnityBase class.
+        TSlint reports errors (property doesn't exist but they do) but they work as expected
+    */
+
     /**
      * Provides a random speed using random generated number
      * @param {the upper range of random number - exclusive} max
      */
-    EntityBase.prototype.getRandomSpeed = function(max = 5) {
+    EntityBase.getRandomSpeed = function(max = 5) {
         return Math.floor((Math.random() * max) + 1);
-
-        /*
-        TODO:
-            Once I can get static methods on this class to work
-            this can be moved to static method
-        */
     };
 
     /**
      * Provides random transparency number from 0 - 1
      */
-    EntityBase.prototype.getRandomTransparency = function() {
+    EntityBase.getRandomTransparency = function() {
         return Math.random();
     };
 
@@ -99,11 +98,6 @@ const EntityBase = (function() {
      */
     EntityBase.getRandomStart = function(min = 0, max = 5) {
         return Math.floor((Math.random() * max) + min);
-
-        /*
-        TODO:
-            Currently this is not working, though it should.
-        */
     };
 
     return EntityBase;
